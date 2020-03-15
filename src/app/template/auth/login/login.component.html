@@ -1,0 +1,33 @@
+<div id="wrapper" class="home-page"> 
+	<app-nav></app-nav>
+<div class="wrapper">
+    <div class=" inner">
+  <div class="image-holder">
+    <img src="../../../../assets/img/logo/log.png" alt="">
+  </div>
+  <!--
+  <div *ngIf="!verifedMail">
+    <p>Email no verifer</p>
+  </div>-->
+  <div class="form">
+    <h3>Login Form</h3>
+
+    <div class="form-wrapper">
+      <input type="email" placeholder="Adresse Email" class="form-control" #userEmail>
+     
+    </div>
+
+    <div class="form-wrapper">
+      <input type="password" placeholder="Mot de passe" class="form-control" #userPassword>
+     
+    </div>
+    <a class="register" [routerLink]="['/forget']" routerLinkActive="router-link-active" >Mot de passe oublier </a>
+    <button (click)="login(userEmail.value, userPassword.value)">Login
+      
+    </button>
+    <button (click)="logout()"></button>
+  </div>
+</div>
+</div>
+<app-footer></app-footer>
+</div>

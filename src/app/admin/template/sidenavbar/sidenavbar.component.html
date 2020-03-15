@@ -1,0 +1,101 @@
+<mat-toolbar id="mainToolbar" color="primary">
+    <mat-icon
+      (click)="onToolbarMenuToggle()"
+      id="toolbarMenu">subject</mat-icon>
+    My Awesome App
+    <span class="toolbar-spacer"></span>
+    <mat-icon
+      class="toolbar-icon"
+      matBadge="8"
+      matBadgePosition="after"
+      matBadgeColor="accent"
+    >notifications</mat-icon>
+  </mat-toolbar>
+  
+  <mat-sidenav-container
+    id="sidenavContainer"
+   fullscreen>
+    <mat-sidenav
+      mode="side"
+      #sidenav
+      id="sidenav"
+      [class.menu-open]="isMenuOpen"
+      [class.menu-close]="!isMenuOpen"
+      opened>
+      
+      <mat-list id="menus">
+        <mat-card>
+          <mat-card-header>
+            <div 
+              mat-card-avatar 
+              class="avatar"></div>
+  
+            <mat-card-title>Slim Ben Jrad </mat-card-title>
+            <mat-card-subtitle>SUPER_ADMIN</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
+        <mat-list-item>
+          <button 
+          class="menu-item"
+            mat-flat-button [routerLink]="['dashboard']">
+            <mat-icon>dashboard</mat-icon>
+          Dashboard</button>
+        </mat-list-item>
+  
+        
+  
+        <mat-list-item>
+            <button 
+            class="menu-item"
+              mat-flat-button (click)="dropped()">
+              <mat-icon>folder</mat-icon>
+            User</button>
+          </mat-list-item>
+  
+          <div *ngIf="droppedList">
+            <mat-list-item >
+              <button 
+              class="menu-item-dropped"
+                mat-flat-button title="Prof" [routerLink]="['users','prof']" routerLinkActive="router-link-active"   >
+                <mat-icon>folder_open</mat-icon>
+                Prof </button>
+            </mat-list-item>
+            <mat-list-item >
+              <button 
+              class="menu-item-dropped"
+                mat-flat-button title="Eleve" [routerLink]="['users','eleve']" routerLinkActive="router-link-active"   >
+                <mat-icon>folder_open</mat-icon>
+                Eleve </button>
+            </mat-list-item>
+            <mat-list-item >
+              <button 
+              class="menu-item-dropped"
+                mat-flat-button title="Eleve" [routerLink]="['users','parent']" routerLinkActive="router-link-active"   >
+                <mat-icon>folder_open</mat-icon>
+                Eleve </button>
+            </mat-list-item>
+  
+          </div>
+  
+          <mat-list-item>
+              <button 
+              class="menu-item"
+                mat-flat-button>
+                <mat-icon>settings_application</mat-icon>
+              Settings</button>
+            </mat-list-item>
+            
+              
+           
+  
+      </mat-list>
+    </mat-sidenav>
+  
+  
+    <mat-sidenav-content [ngStyle]="{ 'margin-left.px': contentMargin }">
+   
+   <router-outlet></router-outlet> 
+      
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  

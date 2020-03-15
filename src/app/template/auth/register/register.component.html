@@ -1,0 +1,54 @@
+<div id="wrapper" class="home-page"> 
+	<app-nav></app-nav>
+<div class="wrapper">
+    <div class=" inner">
+  <div class="image-holder">
+    <img src="../../../../assets/img/logo/log.png" alt="">
+  </div>
+  <div class="form">
+    <h3>Register Form</h3>
+    <div class="form-wrapper">
+      <input type="text" placeholder="Nom" class="form-control" [(ngModel)]="firstName" >
+    </div>
+    <div class="form-wrapper">
+      <input type="text" placeholder="Prenom" class="form-control"  [(ngModel)]="lastName">
+    </div>
+    <div class="form-wrapper">
+      <input type="tel" placeholder="Num Tel" class="form-control"  [(ngModel)]="num_Tel">
+     
+    </div>
+
+    <div class="form-wrapper">
+      <input type="email" placeholder="Email Address" class="form-control"  [(ngModel)]="email">
+     
+    </div>
+
+    <div class="form-wrapper">
+      <input type="password" placeholder="Password" class="form-control"  [(ngModel)]="password">
+     
+    </div>
+    <div class="form-wrapper">
+      <label for="type_user" >Type</label>
+      <select class="form-control" id="type_user" (change)="onChange($event.target.value)"  [(ngModel)]="type_user">
+        <option></option>
+        <option value="parent">Parent</option>
+        <option value="prof">Prof</option>
+        <option value="eleve">Eleve</option>
+      </select>
+    </div>
+    
+    <div class="form-wrapper" *ngIf="!parent">
+      <input type="text" class="form-control" placeholder="Code"  [(ngModel)]="code">
+    </div>
+
+   
+    <button (click)="register(firstName,lastName,num_Tel,type_user,code,email, password)">register
+      
+    </button>
+   
+    
+  </div>
+</div>
+</div>
+<app-footer></app-footer>
+</div>
