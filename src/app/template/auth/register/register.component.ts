@@ -25,6 +25,8 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  
   register(firstName, lastName, num_Tel, type_user, code, email, password) {
     this.service.register(firstName, lastName, num_Tel, type_user, code, email, password)
     this.toaste.showSuccess("Ajout avec success " , "success")

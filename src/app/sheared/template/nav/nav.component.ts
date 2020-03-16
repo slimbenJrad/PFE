@@ -15,14 +15,14 @@ export class NavComponent implements OnInit {
   ngOnInit(): void {
     this.islogged = this.service.isLoggedIn
     
-    if(this.islogged){
+    /*if(this.islogged){
       this.fauth.authState.subscribe(data =>{
         if(data){
           this.isVerif = data.emailVerified
         }
         
       })
-    }
+    }*/
   
 
   console.log(this.islogged)

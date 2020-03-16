@@ -40,7 +40,7 @@
             class="icon-info-blocks material-icons">account_balance</i>Kids<strong>school</strong></a>
       </div>
       <div class="navbar-collapse collapse ">
-        <ul class="nav navbar-nav" *ngIf="isVerif"> 
+        <ul class="nav navbar-nav" *ngIf="islogged"> 
           <li ><a class="waves-effect waves-dark" [routerLink]="['/home']"
               routerLinkActive="router-link-active">Home</a></li>
           
@@ -62,7 +62,7 @@
             <li><a class="waves-effect waves-dark" href="contact.html">Contact</a></li>
        
         </ul>
-        <ul class="nav navbar-nav" *ngIf="!isVerif"> 
+        <ul class="nav navbar-nav" *ngIf="!islogged"> 
             <li class="active"><a class="waves-effect waves-dark" [routerLink]="['/home']"
                 routerLinkActive="router-link-active">Home</a></li>
             

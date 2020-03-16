@@ -11,51 +11,30 @@ import { AngularFireDatabase, AngularFireAction } from '@angular/fire/database';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-@Input() name: string;
-users :Observable<any>;
-log : Observable<any> ;
-items$: Observable<AngularFireAction<firebase.database.DataSnapshot>[]>;
-x =[];
-  constructor(private router :ActivatedRoute,private userService : UsersService,private afDatabase : AngularFireDatabase) { }
+  //@input ()name : recupere la varibale name de users/:name dans routing module du adress(admin/parent par exemple)
+  @Input() name: string;
+
+  log: Observable<any>;
+  constructor(private router: ActivatedRoute, private userService: UsersService, private afDatabase: AngularFireDatabase) { }
 
   ngOnInit(): void {
-    
-    this.router.paramMap.subscribe(params=>{
-      
+
+    this.router.paramMap.subscribe(params => {
+
       this.name = params.get('name');
-     this.users = this.userService.getUsersSnap(this.name)
-     this.users.subscribe(log =>{
-       console.log(log)
-     })
-     this.log = this.userService.getUsers(this.name);
-     this.log.subscribe(data =>{
-       console.log("data",data);
-     })
-     //this.users = this.afDatabase.database.ref(`user`).orderByChild('role').equalTo(this.name);
-     /*(sn)=>{
-      
-      var xs = sn.val()
-     // this.users = sn.val();
-      console.log(sn)
-     for (var k in xs){
-       this.x.push(xs[k])
-      
-     }
-     //console.log("user",this.users)
-    
-     console.log("x",this.x)
-    console.log("xs",xs);
-     console.log("sn",sn.val());
-     })*/
-     
-     
-      
-    
-    
+      /* this.users = this.userService.getUsersSnap(this.name)
+       this.users.subscribe(log =>{
+         console.log(log)
+       })*/
+      this.log = this.userService.getUsers(this.name);
+     /* this.log.subscribe(data => {
+        console.log("data", data);
+      })*/
+
     })
-  
-   
-    
+
+
+
   }
 
 }

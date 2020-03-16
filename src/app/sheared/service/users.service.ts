@@ -8,35 +8,32 @@ import { query } from '@angular/animations';
   providedIn: 'root'
 })
 export class UsersService {
-  user : Observable<any>
-  log : Observable<any> ;
-  x ={};
-  constructor(private afDatabase : AngularFireDatabase) { }
+  user: Observable<any>
+  //log : Observable<any> ;
 
-  getUsers(name : string){
-   this.log =  this.afDatabase.list(`user`,ref=> 
+  constructor(private afDatabase: AngularFireDatabase) { }
+
+  getUsers(name: string) {
+    //recupere l'objet de user ou son nom egal a la variable name
+    this.user = this.afDatabase.list(`user`, ref =>
       ref.orderByChild('role').equalTo(name)
-      
-     
-     
     ).snapshotChanges().pipe(
-      map(chang=>
-        chang.map(c=>({key: c.payload.key, val : c.payload.val() }))
-        )
+      //map a diviser l'objet en key et val()
+      map(chang =>
+        chang.map(c => ({ key: c.payload.key, val: c.payload.val() }))
+      )
     )
+    return this.user;
 
-    console.log(this.log)
-   return this.log ;
 
-  
-   
+
   }
-  getUsersSnap (name : string ){
+  /*getUsersSnap (name : string ){
     this.user= this.afDatabase.list(`user/${name}`).snapshotChanges().pipe(
       map(chang=>
         chang.map(c=>({key: c.payload.key, val : c.payload.val() }))
         )
     )
     return this.user
-  }
+  }*/
 }

@@ -12,7 +12,6 @@ import { LoginComponent } from './template/auth/login/login.component';
 import { RegisterComponent } from './template/auth/register/register.component';
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
-import { VerifyComponent } from './verify/verify.component';
 import { ForgotComponent } from './forgot/forgot.component';
 import { ForgetComponent } from './template/auth/forget/forget.component';
 import { FormsModule } from '@angular/forms';
@@ -45,7 +44,6 @@ var config = {
     SlideComponent,
     LoginComponent,
     RegisterComponent,
-    VerifyComponent,
     ForgotComponent,
     ForgetComponent,
     DashboardComponent,

@@ -5,7 +5,7 @@
         <th scope="col">First Name</th>
         <th scope="col">Last Name</th>
         <th scope="col">Numero Tel </th>
-
+        <th scope="col">Email</th>
         <th scope="col">Code</th>
       </tr>
     </thead>
@@ -15,12 +15,11 @@
         <td>{{user.val.firstName}}</td>
         <td>{{user.val.lastName}}</td>
         <td>{{user.val.num_tel}}</td>
+        <td>{{user.val.email}}</td>
         <td>{{user.val.code}}</td>
-        <td>{{user.key}}</td>
+        
       </tr>
     </tbody>
   </table>
-  <div *ngFor="let user of users | async">
-    {{user.val.firstName}}
-  </div>
+ 
 </div>
