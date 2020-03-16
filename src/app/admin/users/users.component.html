@@ -11,12 +11,16 @@
     </thead>
     <tbody>
       
-      <tr *ngFor="let user of users | async ">
+      <tr *ngFor="let user of log | async ">
         <td>{{user.val.firstName}}</td>
-        <td>{{user.lastName}}</td>
-        <td>{{user.num_tel}}</td>
-        <td>{{user.code}}</td>
+        <td>{{user.val.lastName}}</td>
+        <td>{{user.val.num_tel}}</td>
+        <td>{{user.val.code}}</td>
+        <td>{{user.key}}</td>
       </tr>
     </tbody>
   </table>
+  <div *ngFor="let user of users | async">
+    {{user.val.firstName}}
+  </div>
 </div>

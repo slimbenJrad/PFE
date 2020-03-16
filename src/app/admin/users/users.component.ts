@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UsersService } from 'src/app/sheared/service/users.service';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators'
+import { map, subscribeOn } from 'rxjs/operators'
 import { AngularFireDatabase, AngularFireAction } from '@angular/fire/database';
 
 @Component({
@@ -13,7 +13,7 @@ import { AngularFireDatabase, AngularFireAction } from '@angular/fire/database';
 export class UsersComponent implements OnInit {
 @Input() name: string;
 users :Observable<any>;
-log : any ;
+log : Observable<any> ;
 items$: Observable<AngularFireAction<firebase.database.DataSnapshot>[]>;
 x =[];
   constructor(private router :ActivatedRoute,private userService : UsersService,private afDatabase : AngularFireDatabase) { }
@@ -27,8 +27,13 @@ x =[];
      this.users.subscribe(log =>{
        console.log(log)
      })
-     this.afDatabase.database.ref(`user`).orderByChild('role').equalTo(this.name).once('value',(sn)=>{
-
+     this.log = this.userService.getUsers(this.name);
+     this.log.subscribe(data =>{
+       console.log("data",data);
+     })
+     //this.users = this.afDatabase.database.ref(`user`).orderByChild('role').equalTo(this.name);
+     /*(sn)=>{
+      
       var xs = sn.val()
      // this.users = sn.val();
       console.log(sn)
@@ -41,7 +46,7 @@ x =[];
      console.log("x",this.x)
     console.log("xs",xs);
      console.log("sn",sn.val());
-     })
+     })*/
      
      
       
