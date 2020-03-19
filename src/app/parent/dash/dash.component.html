@@ -1,0 +1,26 @@
+
+<label> entrer code parent</label>
+<input type="text" class="form-control" placeholder="Codep"  #codep>
+<button (click)="codeparent(codep.value)">codeparent</button>
+{{test}}
+<div class="container">
+    <table class="table">
+     
+      <tbody>
+        
+        <tr *ngFor="let user of log " >
+          <td>{{user.val.firstName}}</td>
+          <td>{{user.val.lastName}}</td>
+          <td>{{user.val.num_tel}}</td>
+          <td>{{user.val.email}}</td>
+          <td>{{user.val.code}}</td>
+          
+        </tr>
+   
+      </tbody>
+      
+    </table>
+
+  </div>
+  
+    

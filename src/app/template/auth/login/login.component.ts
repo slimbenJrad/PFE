@@ -20,8 +20,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 async login(email,password){
-
-
   this.service.login(email,password);
   setTimeout(()=>{
     this.goDashbord();
@@ -44,12 +42,19 @@ logout(){
 goDashbord(){
   this.profile = JSON.parse( localStorage.getItem('profil'));
   
-   
     console.log(this.profile.role);
   if(this.profile.role === 'admin'){
     this.router.navigate(['admin/dashboard']);
   }
   
 
+}
+goDashbord2(){
+  this.profile = JSON.parse( localStorage.getItem('profil'));
+  
+    console.log(this.profile.role);
+  if(this.profile.role !== 'admin'){
+    this.router.navigate(['parent/dashboard']);
+  }
 }
 }

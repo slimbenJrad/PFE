@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './sheared/template/nav/nav.component';
@@ -22,6 +22,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { SidenavbarComponent } from './admin/template/sidenavbar/sidenavbar.component';
 import { UsersComponent } from './admin/users/users.component';
+import { TestComponent } from './test/test.component';
 
 var config = {
   apiKey: "AIzaSyAZu5KzjBDro5N6D4czheCDGwOmcA9en7A",
@@ -49,11 +50,13 @@ var config = {
     DashboardComponent,
     SidenavbarComponent,
     UsersComponent,
+    TestComponent,
     
 
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(config),
     AngularFireAuthModule,

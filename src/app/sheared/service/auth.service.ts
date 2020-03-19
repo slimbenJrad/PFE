@@ -25,7 +25,7 @@ export class AuthService {
   async login(mail: string, pwd: string) {
     this.logs = await this.fauth.auth.signInWithEmailAndPassword(mail, pwd);
     if (this.logs) {
-      //chareger l'objet du user profile  courant
+      //charger l'objet du user profile  courant
       this.fauth.authState.subscribe(data => {
         if (data) {
           this.afDatabase.object(`user/${data.uid}`).valueChanges().subscribe(log => {

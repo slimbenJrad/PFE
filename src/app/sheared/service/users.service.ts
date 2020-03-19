@@ -9,7 +9,7 @@ import { query } from '@angular/animations';
 })
 export class UsersService {
   user: Observable<any>
-  //log : Observable<any> ;
+  user2 : Observable<any> 
 
   constructor(private afDatabase: AngularFireDatabase) { }
 
@@ -24,9 +24,19 @@ export class UsersService {
       )
     )
     return this.user;
-
-
-
+  }
+  codeparent(codep:string){
+    console.log("code",codep)
+   this.user2 = this.afDatabase.list(`user`, ref =>
+    ref.orderByChild('codeparent').equalTo(codep)
+  ).snapshotChanges().pipe(
+    //map a diviser l'objet en key et val()
+    map(chang =>
+      chang.map(c => ({ key: c.payload.key, val: c.payload.val() }))
+    )
+  )
+  return this.user2;
+}
   }
   /*getUsersSnap (name : string ){
     this.user= this.afDatabase.list(`user/${name}`).snapshotChanges().pipe(
@@ -36,4 +46,4 @@ export class UsersService {
     )
     return this.user
   }*/
-}
+
