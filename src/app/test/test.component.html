@@ -2,23 +2,22 @@
 <label> entrer code parent</label>
 <input type="text" class="form-control" placeholder="Codep"  #codep>
 <button (click)="codeparent(codep.value)">codeparent</button>
-{{test}}
 <div class="container">
     <table class="table">
      
       <tbody>
-        
+        <!--3lech mouch user2 5ater ena 3malt return user2 fi code parent-->
         <tr *ngFor="let user of log " >
           <td>{{user.val.firstName}}</td>
           <td>{{user.val.lastName}}</td>
           <td>{{user.val.num_tel}}</td>
           <td>{{user.val.email}}</td>
           <td>{{user.val.code}}</td>
-          
+          <button (click)="lier(user.key)">codeparent</button>
         </tr>
    
       </tbody>
       
     </table>
-
   </div>
+ 

@@ -23,6 +23,7 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { SidenavbarComponent } from './admin/template/sidenavbar/sidenavbar.component';
 import { UsersComponent } from './admin/users/users.component';
 import { TestComponent } from './test/test.component';
+import { DashparentComponent } from './parent/dashparent/dashparent.component';
 
 var config = {
   apiKey: "AIzaSyAZu5KzjBDro5N6D4czheCDGwOmcA9en7A",
@@ -51,6 +52,7 @@ var config = {
     SidenavbarComponent,
     UsersComponent,
     TestComponent,
+    DashparentComponent,
     
 
   ],

@@ -10,11 +10,13 @@ import { SidenavbarComponent } from './admin/template/sidenavbar/sidenavbar.comp
 import { UsersComponent } from './admin/users/users.component';
 import { AuthGuard } from './sheared/guard/auth.guard';
 import { TestComponent } from './test/test.component';
+import { DashparentComponent } from './parent/dashparent/dashparent.component';
 
 // a7na 3ana zouz component b nafes el esm "DashboardComponent" donc mahouch bech ya3ref anhi bdhbet eli 
 //bech yemchilha donc na3mlou alias "as DashboardParent " bech nfar9ou binet zouz el comonent andhom nafs el esm
 const routes: Routes = [
   { path: 'test', component: TestComponent },
+  { path: 'dashparent', component: DashparentComponent },
 
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {

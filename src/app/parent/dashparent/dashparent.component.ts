@@ -1,20 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from '../sheared/service/users.service';
+import { ParentService } from 'src/app/sheared/service/parent.service';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { ParentService } from '../sheared/service/parent.service';
-
+import { Observable } from 'rxjs';
+import { UsersService } from 'src/app/sheared/service/users.service';
+import { AngularFireAuth } from '@angular/fire/auth';
 @Component({
-  selector: 'app-test',
-  templateUrl: './test.component.html',
-  styleUrls: ['./test.component.css']
+  selector: 'app-dashparent',
+  templateUrl: './dashparent.component.html',
+  styleUrls: ['./dashparent.component.css']
 })
-export class TestComponent implements OnInit {
+export class DashparentComponent implements OnInit {
 
   codep : any ;
-    user: Observable<any>
+    users: Observable<any>
     log : any ;
     test = "123456"
   constructor(private service:ParentService,private router : Router,private afDatabase: AngularFireDatabase) { }
@@ -22,17 +21,15 @@ export class TestComponent implements OnInit {
   }
    codeparent(codep){
     //console.log(codep)
-    this.user= this.service.codeparent(codep);
-    console.log("user",this.user)
-    this.user.subscribe(data=>{
+    this.users= this.service.codeparent(codep);
+    console.log("user",this.users)
+    this.users.subscribe(data=>{
        this.log = data
       console.log("data",data)
     })
   } 
   lier(code :any ){
     this.service.lier(code)
-    console.log(code)
   }
   
   }
-

@@ -1,2 +1,21 @@
-<p>Dashboard</p>
-page par default 
+
+    <!--<div class="form-wrapper">
+        <input type="text" placeholder="Titre" class="form-control" #titre>
+      </div>
+      <div class="form-wrapper">
+        <input type="text" placeholder="contenu" class="form-control" #contenu>
+      </div>-->
+      <div class="form">
+        <h3>Register Form</h3>
+        <div class="form-wrapper">
+          <input type="text" placeholder="Titre" class="form-control" [(ngModel)]="titre" >
+        </div>
+        <div class="form-wrapper">
+          <input type="text" placeholder="contenu" class="form-control"  [(ngModel)]="contenu">
+        </div>
+        <button (click)="evenement(titre,contenu)">ajouter
+      
+        </button>
+       
+        
+      </div>
