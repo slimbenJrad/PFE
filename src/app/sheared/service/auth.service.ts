@@ -56,10 +56,7 @@ export class AuthService {
           code: code,
           role: type_user,
           email: email
-
         }).then(() => console.log("insrt lok"));
-
-
       })
       //this.verify(); { }
     }

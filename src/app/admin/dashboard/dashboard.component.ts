@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ToastService } from 'src/app/sheared/service/toast.service';
 import { Evenement } from 'src/app/sheared/service/evenement';
 
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -13,21 +14,27 @@ import { Evenement } from 'src/app/sheared/service/evenement';
 export class DashboardComponent implements OnInit {
   titre: string;
   contenu: string;
-  email: string;
+  img: File;
   password: string;
   num_Tel: number;
   code: string = "";
-  type_user: string;
-  constructor(private service: AuthService, public event:Evenement, private router: Router,private toaste : ToastService) { }
-
-
+  selected: any;
+  constructor(private upload:Evenement, public event:Evenement,private toaste : ToastService) { }
   ngOnInit(): void {
   }
-  evenement(titre,contenu) {
-    this.event.event(titre,contenu)
+  detect(event){
+    this.selected=event.target.files[0];
+    console.log(event); 
+  }
+  evenement(titre,contenu,img) {
+    this.event.event(titre,contenu,this.selected)
+    //this.event.upload(this.selected)
     this.toaste.showSuccess("Ajout avec success " , "success")
     setTimeout(() => {
       //this.service.logout();
    }, 2000);
 }
+photo() {
+  this.event.upload(this.selected)
+  this.toaste.showSuccess("Ajout avec success " , "success")}
 }

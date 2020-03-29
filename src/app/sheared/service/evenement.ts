@@ -5,36 +5,37 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import { User } from 'firebase';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
+import * as firebase from 'firebase';
+import { $ } from 'protractor';
 @Injectable({
     providedIn: 'root'
   })
   export class Evenement {
-    user: User;
-    logs: any;
+    private uploadtask:firebase.storage.UploadTask;
+private path:string='/uploads'
+   
     profile: Observable<any>
     constructor(public fauth: AngularFireAuth, public route: Router, private afDatabase: AngularFireDatabase) {
-    /*  this.fauth.authState.subscribe(user => {
-        if (user) {
-          this.user = user;
-          localStorage.setItem('user', JSON.stringify(this.user));
-        } else {
-          localStorage.setItem('user', null);
-        }
-      })*/
     }
-    async event(titre,contenu) {
+    async upload(img:any) {
+      let num = Math.floor((Math.random() * 1000000))
+      console.log(num,"num")
+      let storageref:firebase.storage.Reference = firebase.storage().ref().child(`event/photo/${num}`);
+      storageref.put(img);
+      console.log("img",img)
+        this.afDatabase.object('event').set({
+         img: `${storageref}`,
+        }).then(() => console.log("insrt lok"));
+        
+      }
+    async event(titre,contenu,img) {
         try {
-         // await this.fauth.auth.createUserWithEmailAndPassword(email, password);
-          // console.log('succes',result)
           this.afDatabase.object('event').set({
             titre: titre,
             contenu: contenu,
           }).then(() => console.log("insrt lok"));
-          
         }
-        catch (e) {
-          console.log(e);
-        }
-    
-      }
+        catch (e) {console.log(e);}
+        this.upload(img)
+  }
   }

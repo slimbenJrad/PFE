@@ -13,7 +13,13 @@
         <div class="form-wrapper">
           <input type="text" placeholder="contenu" class="form-control"  [(ngModel)]="contenu">
         </div>
-        <button (click)="evenement(titre,contenu)">ajouter
+        <div class="form-wrapper">
+          <input type="file" (change)="detect($event)" class="form-control"  [(ngModel)]="img">
+        </div>
+        <button (click)="photo()">ajouter photo
+      
+        </button>
+        <button (click)="evenement(titre,contenu,img)">ajouter
       
         </button>
        
