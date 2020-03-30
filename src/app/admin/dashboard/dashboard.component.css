@@ -1,5 +1,33 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 
+body {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-family: sans-serif;
+  justify-content: center;
+  text-align: center;
+}
+.inputfile + label {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: white;
+  background-color: black;
+  display: inline-block;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+  background-color: red;
+}
+button {
+  margin-top: 2em;
+}
 /*-------------------------------- END ----*/
     #body-row {
         margin-left: 0;
@@ -271,6 +299,10 @@ textarea {
 
 button,
 input {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: rgb(238, 121, 121);
+  display: block;
   overflow: visible; }
 
 button,

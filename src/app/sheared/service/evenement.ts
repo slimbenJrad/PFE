@@ -7,10 +7,12 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import * as firebase from 'firebase';
 import { $ } from 'protractor';
+import { map } from 'rxjs/operators';
 @Injectable({
     providedIn: 'root'
   })
   export class Evenement {
+    liste: Observable<any>
     private uploadtask:firebase.storage.UploadTask;
     private storageref2:firebase.storage.Reference
     constructor(public fauth: AngularFireAuth, public route: Router, private afDatabase: AngularFireDatabase) {
@@ -34,6 +36,16 @@ import { $ } from 'protractor';
           date:date,
         })
       }catch (e) {console.log(e);}
+      }
+      getevent() {
+        //recupere l'objet de user ou son nom egal a la variable name
+        this.liste = this.afDatabase.list(`event`).snapshotChanges().pipe(
+          //map a diviser l'objet en key et val()
+          map(chang =>
+            chang.map(c => ({ key: c.payload.key, val: c.payload.val() }))
+          )
+        )
+        return this.liste;
       }
    /* async event(titre,contenu,img) {
         try {

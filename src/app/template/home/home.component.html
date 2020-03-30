@@ -10,7 +10,7 @@
 			</div>
 		</div>
 	
-	<div class="row service-v1 margin-bottom-40">
+	<div class="row service-v1 margin-bottom-40" >
             <div class="col-md-4 md-margin-bottom-40">
 					<div class="card small">
                         <div class="card-image">
@@ -18,11 +18,11 @@
                             <span class="card-title">Science Programs</span>
                         </div>
                         <div class="card-content">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt
+                            <p *ngFor="let ev of liste | async">
+                                {{ev.val.title}}
                             </p>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt
+                                
                             </p>
                         </div>
                     </div>        
