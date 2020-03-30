@@ -14,14 +14,20 @@
           <input type="text" placeholder="contenu" class="form-control"  [(ngModel)]="contenu">
         </div>
         <div class="form-wrapper">
-          <input type="file" (change)="detect($event)" class="form-control"  [(ngModel)]="img">
+          <input type="file" (change)="chooseFiles($event)" class="form-control"  [(ngModel)]="img">
         </div>
-        <button (click)="photo()">ajouter photo
-      
-        </button>
-        <button (click)="evenement(titre,contenu,img)">ajouter
+      </div>
+    <mat-form-field class="example-full-width">
+      <mat-label>Choose a date </mat-label>
+      <input matInput [min]="mindate" [matDatepicker]="picker" 
+      [(ngModel)]="date_ev"><!--3malt ngmodel bech n5arej el resultas mta3 el input w nesta3melou fi upload-->
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+        <button (click)="upload(titre,contenu,date_ev)">ajouter
       
         </button>
        
         
-      </div>
+      

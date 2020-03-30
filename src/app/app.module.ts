@@ -24,7 +24,7 @@ import { SidenavbarComponent } from './admin/template/sidenavbar/sidenavbar.comp
 import { UsersComponent } from './admin/users/users.component';
 import { TestComponent } from './test/test.component';
 import { DashparentComponent } from './parent/dashparent/dashparent.component';
-
+import { AngularFireStorageModule } from '@angular/fire/storage';
 var config = {
   apiKey: "AIzaSyAZu5KzjBDro5N6D4czheCDGwOmcA9en7A",
   authDomain: "pfe-e-34597.firebaseapp.com",
@@ -66,7 +66,8 @@ var config = {
     AngularFireDatabaseModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    MaterialModule
+    MaterialModule,
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

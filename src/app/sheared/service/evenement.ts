@@ -12,30 +12,38 @@ import { $ } from 'protractor';
   })
   export class Evenement {
     private uploadtask:firebase.storage.UploadTask;
-private path:string='/uploads'
-   
-    profile: Observable<any>
+    private storageref2:firebase.storage.Reference
     constructor(public fauth: AngularFireAuth, public route: Router, private afDatabase: AngularFireDatabase) {
     }
-    async upload(img:any) {
+    async upload(titre,contenu,img:any) {
       let num = Math.floor((Math.random() * 1000000))
+      let storageref:firebase.storage.Reference
+      let name="event"
+      let date: Date = new Date();
+
       console.log(num,"num")
-      let storageref:firebase.storage.Reference = firebase.storage().ref().child(`event/photo/${num}`);
-      storageref.put(img);
-      console.log("img",img)
-        this.afDatabase.object('event').set({
-         img: `${storageref}`,
-        }).then(() => console.log("insrt lok"));
-        
+       storageref = firebase.storage().ref().child(`event/photo/${num}`);
+       storageref.put(img);
+       storageref.getDownloadURL();
+       console.log("URL Download ",storageref.getDownloadURL())
+       try {
+        this.afDatabase.object(`${name}${num}`).set({
+          titre: titre,
+          contenu: contenu,
+          img: `${storageref}`,
+          date:date,
+        })
+      }catch (e) {console.log(e);}
       }
-    async event(titre,contenu,img) {
+   /* async event(titre,contenu,img) {
         try {
           this.afDatabase.object('event').set({
             titre: titre,
             contenu: contenu,
-          }).then(() => console.log("insrt lok"));
+            img: `${this.storageref2}`,
+          }).then(() => console.log(titre));
         }
         catch (e) {console.log(e);}
         this.upload(img)
-  }
+  }*/
   }
