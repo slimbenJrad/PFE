@@ -1,67 +1,35 @@
 <div id="wrapper" class="home-page">
     <app-nav></app-nav>
 <app-slide></app-slide>
-		<section class="feature">
-		<div class="container">
-	 	<div class="row">
-			<div class="col-md-12">
-				<div class="aligncenter"><h2 class="aligncenter">Our Programs</h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt eius magni provident, <br/>doloribus omnis minus ovident, doloribus omnis minus temporibus perferendis nesciunt..</div>
-				<br/>
-			</div>
-		</div>
-	
-	<div class="row service-v1 margin-bottom-40" >
-            <div class="col-md-4 md-margin-bottom-40">
-					<div class="card small">
-                        <div class="card-image">
-                             <img class="img-responsive" src="../assets/img/service1.jpg" alt="">  
-                            <span class="card-title">Science Programs</span>
-                        </div>
-                        <div class="card-content">
-                            <p *ngFor="let ev of liste | async">
-                                {{ev.val.title}}
-                            </p>
-                            <p>
-                                
-                            </p>
-                        </div>
-                    </div>        
-            </div>
-			   <div class="col-md-4 md-margin-bottom-40">
-					<div class="card small">
-                        <div class="card-image">
-                             <img class="img-responsive" src="../assets/img/service2.jpg" alt="">  
-                            <span class="card-title">Computers Programs</span>
-                        </div>
-                        <div class="card-content">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt
-                            </p>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt
-                            </p>
-                        </div>
-                    </div>        
-            </div>
-			   <div class="col-md-4 md-margin-bottom-40">
-					<div class="card small">
-                        <div class="card-image">
-                             <img class="img-responsive" src="../assets/img/service3.jpg" alt="">  
-                            <span class="card-title">Sports Programs</span>
-                        </div>
-                        <div class="card-content">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt
-                            </p>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt
-                            </p>
-                        </div>
-                    </div>        
-            </div> 
+<section class="feature">
+    <div class="container">
+     <div class="row">
+        <div class="col-md-12">
+            <div class="aligncenter"><h2 class="aligncenter">Our Programs</h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt eius magni provident, <br/>doloribus omnis minus ovident, doloribus omnis minus temporibus perferendis nesciunt..</div>
+            <br/>
         </div>
-		</div>
-		</section>
+    </div>
+
+    <div class="row service-v1 margin-bottom-40">
+        <div class="col-md-4 md-margin-bottom-40" *ngFor="let ev of liste | async">
+                <div class="card small">
+                    <div class="card-image">
+                         <img class="img-responsive" src={{ev.val.img}} alt="">  
+                        <span class="card-title">{{ev.val.title}}</span>
+                    </div>
+                    <div class="card-content">
+                        <p>
+                            {{ev.val.contenu}}
+                        </p>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt
+                        </p>
+                    </div>
+                </div>        
+        </div>
+    </div>
+    </div>
+    </section>
 	<section id="content"> 
 	<div class="container">
 	
@@ -118,6 +86,7 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt</p>
                 </div>
             </div>
+
         </div>
 		</section>
 	</div>

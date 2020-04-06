@@ -6,7 +6,17 @@ Note: Licence under Creative Commons Attribution 3.0
 @import url('http://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700|Open+Sans:400,600,700'); 
 @import url('assets/css/animate.css');  
 @import url('assets/css/font-awesome.css');
-
+.card-title {
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 16px;
+    background: rgb(39, 39, 39);
+    width: 100%;
+    text-align: center;
+    text-transform: capitalize;
+}
 body {
 	font-family:'Open Sans', Arial, sans-serif;
 	font-weight:300;
@@ -1776,7 +1786,6 @@ padding-top: 3px;
 	}
 	
 
-	
   [class*="span"] {
 		margin-bottom:20px;
   }
@@ -1822,7 +1831,7 @@ padding-top: 3px;
 span.color {
     color: #ea3d69;
     text-transform: uppercase;
-    font-weight: 600;
+	font-weight: 600;
 }
 .input-field label {
     color: #888;
