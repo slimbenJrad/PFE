@@ -18,14 +18,18 @@
                         <span class="card-title">{{ev.val.title}}</span>
                     </div>
                     <div class="card-content">
-                        <p>
+                        <p class="date_event"> <img class="clock" src="..\assets\img\planning-14-512.png" alt="">
+                            {{ ev.val.date_event| date:'mediumDate'}},{{ ev.val.date_event| date:'shortTime'}}</p>
+                        <hr>
+                            <p>
                             {{ev.val.contenu}}
-                        </p>
-                        <p>
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt
+                            Loremsit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt
                         </p>
                     </div>
-                </div>        
+                </div>    
         </div>
     </div>
     </div>
