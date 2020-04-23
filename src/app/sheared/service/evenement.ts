@@ -38,7 +38,6 @@ import { map } from 'rxjs/operators';
       }catch (e) {console.log(e);}
       }
       getevent() {
-        //recupere l'objet de user ou son nom egal a la variable name
         this.liste = this.afDatabase.list(`event`).snapshotChanges().pipe(
           //map a diviser l'objet en key et val()
           map(chang =>

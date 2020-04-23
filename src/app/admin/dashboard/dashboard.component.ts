@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { ToastService } from 'src/app/sheared/service/toast.service';
 import { Evenement } from 'src/app/sheared/service/evenement';
 import { AngularFireStorage } from '@angular/fire/storage';
-
 import { finalize } from 'rxjs/operators';
 import { AngularFireDatabase } from '@angular/fire/database';
 @Component({
@@ -45,7 +44,7 @@ export class DashboardComponent implements OnInit {
     const filRef= this.storage.ref(`event/img/${uniquekey}`);
     const uploadTask = this.storage.upload(`event/img/${uniquekey}`,file);
    //this.imgsrc = uploadTask.get;
-    uploadTask.snapshotChanges().pipe(
+   /* uploadTask.snapshotChanges().pipe(
       finalize(() => {
       
         this.imgpush= filRef.getDownloadURL();
@@ -53,15 +52,20 @@ export class DashboardComponent implements OnInit {
     )
     .subscribe(data =>{
       console.log(data);
-    });
+    });*/
+    uploadTask.then((uploadSnapshot: firebase.storage.UploadTaskSnapshot) => {
     
+      //Fetch the download URL of the Storage file
+      uploadSnapshot.ref.getDownloadURL().then(downloadURL=> {
+        this.imgpush = downloadURL ;
+        console.log("URL",downloadURL)
+      })
+    })
   }
   upload(title,contenu,date_ev){
-    this.imgpush.subscribe(url=>{
-      this.imgpush=url;
-      console.log(this.imgpush);
        this.date = new Date();
        console.log(this.date.toString())
+       if(this.imgpush){
     this.afDatabase.list(`event`).push({
       img:this.imgpush,
       title:title,
@@ -69,7 +73,12 @@ export class DashboardComponent implements OnInit {
       date_creation:this.date.toString(),
       date_event:date_ev.toString()
     })
-  })
+    this.toaste.showSuccess("Ajout avec success " , "success")
+  }
+  else{
+    this.toaste.showInfo("Alert","evenement en cours de telechargement")
+  }
+  }
   
     
   }
@@ -81,4 +90,3 @@ export class DashboardComponent implements OnInit {
 photo() {
   //this.event.upload(this.selected)
   this.toaste.showSuccess("Ajout avec success " , "success")}*/
-}

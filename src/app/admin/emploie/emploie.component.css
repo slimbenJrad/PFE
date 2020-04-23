@@ -1,0 +1,47 @@
+.container {
+  width: 100%;
+  margin: 5px;
+  padding: 5px;
+  background-color: white;
+  height: 100%;
+}
+
+.update{
+  float: right;
+}
+.pdfContainer {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+pdf-viewer {
+  display: block;
+  height: 100vh;
+}
+.emploie{
+  height: 540px;
+  width: 100%;
+display: block;}
+.pdf{
+  height: 540px;
+  width: 100%;
+}
+.mat-select {
+  border-radius: 5px;
+  background: white;
+  width: 100%;
+  border: snow 1px snow(101, 115, 126, 0.5);
+  padding: 10px;
+
+}
+
+.pdf {
+  height: 30px;
+  position: relative;
+  bottom: 0cm;
+}
+
+

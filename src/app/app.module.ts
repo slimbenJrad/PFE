@@ -25,6 +25,10 @@ import { UsersComponent } from './admin/users/users.component';
 import { TestComponent } from './test/test.component';
 import { DashparentComponent } from './parent/dashparent/dashparent.component';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { EmploieComponent } from './admin/emploie/emploie.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogComponent } from './admin/emploie/dialog/dialog.component';
 var config = {
   apiKey: "AIzaSyAZu5KzjBDro5N6D4czheCDGwOmcA9en7A",
   authDomain: "pfe-e-34597.firebaseapp.com",
@@ -53,6 +57,7 @@ var config = {
     UsersComponent,
     TestComponent,
     DashparentComponent,
+    EmploieComponent,
     
 
   ],
@@ -67,7 +72,12 @@ var config = {
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     MaterialModule,
-    AngularFireStorageModule
+    AngularFireStorageModule, 
+    PdfViewerModule,
+    MatDialogModule
+  ],
+  entryComponents:[
+    DialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

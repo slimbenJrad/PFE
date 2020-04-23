@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row" *ngIf="name === 'prof'">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <mat-label>Selectionez un professeur</mat-label>
+      <mat-select placeholder="Chosisez un prof" [(value)]="selected" (selectionChange)="doSomething()">
+        <mat-option *ngFor="let item of log | async" value="{{item.key}}">{{item.val.firstname}} {{item.val.lastName}}
+        </mat-option>
+      </mat-select>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+  <div class="row" *ngIf="name === 'eleve'">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <mat-label>Selectionez une classe</mat-label>
+      <mat-select placeholder="Chosisez une classe" [(value)]="selected" (selectionChange)="doSomething()">
+        <mat-option *ngFor="let item of classe | async" value="{{item.key}}">{{item.val.niveau}} 
+        </mat-option>
+      </mat-select>
+    </div>
+    <div class="col-md-4"> </div>
+  </div>
+  <div *ngIf="selected" >
+    <div *ngIf="empl" class="emploie">
+ <pdf-viewer 
+      src="{{empl.horaire}}"
+      [render-text]="true" ([page])=1 [fit-to-page]="false"
+      [original-size]="false" [autoresize]="false"
+      style="display: block; height:300px; width: 100%;"></pdf-viewer>
+      <div>
+      <p class="col-md-11" style="width:90.2%" > derniere modification:{{ empl.date_modif| date:'mediumDate'}},{{ empl.date_modif| date:'shortTime'}}</p>
+        <button class="update " mat-raised-button color="primary"
+        (click)="openDialog()">update</button></div>
+  </div>
+</div>
+  

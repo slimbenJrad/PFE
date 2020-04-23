@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Emploie</h1>
+<div mat-dialog-content>
+    <p>choisiez un emploie</p>
+  </div>
+<div mat-dialog-actions>
+  <div class="form-wrapper">
+    <input type="file" (change)="chooseFiles($event)" class="form-control"  accept="application/pdf">
+  </div>
+    <button mat-button mat-dialog-close (click)="uploadempl()" >No Thanks</button>
+
+  </div>

@@ -9,6 +9,7 @@ export class SidenavbarComponent implements OnInit {
   isMenuOpen = true;
   contentMargin = 240;
   droppedList = false;
+  droppedempl = false;
   constructor() { }
 
   ngOnInit(): void {
@@ -25,7 +26,8 @@ export class SidenavbarComponent implements OnInit {
   }
   dropped(){
     this.droppedList = !this.droppedList;
-
   }
-
+  dropemploie(){
+    this.droppedempl = !this.droppedempl;
+  }
 }
