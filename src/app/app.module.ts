@@ -29,6 +29,11 @@ import { EmploieComponent } from './admin/emploie/emploie.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogComponent } from './admin/emploie/dialog/dialog.component';
+import { AbsenceComponent } from './admin/absence/absence.component';
+import { HeureComponent } from './admin/absence/heure/heure.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { CKEditorModule } from 'ckeditor4-angular';
+
 var config = {
   apiKey: "AIzaSyAZu5KzjBDro5N6D4czheCDGwOmcA9en7A",
   authDomain: "pfe-e-34597.firebaseapp.com",
@@ -58,6 +63,8 @@ var config = {
     TestComponent,
     DashparentComponent,
     EmploieComponent,
+    AbsenceComponent,
+    HeureComponent,
     
 
   ],
@@ -74,10 +81,13 @@ var config = {
     MaterialModule,
     AngularFireStorageModule, 
     PdfViewerModule,
-    MatDialogModule
+    MatDialogModule,
+    Ng2SearchPipeModule,
+    CKEditorModule
   ],
   entryComponents:[
-    DialogComponent
+    DialogComponent,
+    HeureComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -14,7 +14,7 @@
           <input type="text" placeholder="contenu" class="form-control"  [(ngModel)]="contenu">
         </div>
         <div class="form-wrapper">
-          <input type="file" (change)="chooseFiles($event)" class="form-control"  [(ngModel)]="img">
+          <input type="file" (change)="chooseFiles($event)" class="file"  [(ngModel)]="img">
         </div>
       </div>
     <mat-form-field class="example-full-width">
@@ -26,8 +26,49 @@
     </mat-form-field>
 
         <button (click)="upload(titre,contenu,date_ev)">ajouter
-      
         </button>
+        <!--partie cours-->
+        <button (click)="afficher()">afficher
+        </button>
+        
+        <div *ngIf="affiche">
+
+          <div class="row" >
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+              <mat-label>Selectionez une classe</mat-label>
+              <mat-select placeholder="Chosisez une classe" [(value)]="selected" >
+                <mat-option *ngFor="let item of classe | async" value="{{item.key}}">{{item.val.niveau}} 
+                </mat-option>
+              </mat-select>
+            </div>
+            <div class="col-md-4"> </div>
+          </div>
+          <div class="form-wrapper">
+            <input type="file" (change)="chooseFiles($event)" class="file"  [(ngModel)]="file">
+          </div>
+          <br>
+          <label class="checkbox-inline">
+            <input type="checkbox" value="cours">cours
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" value="">correction
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" value="">travail
+          </label>  <p></p>
+          <div class="form-wrapper">
+            <input type="file" (change)="chooseFiles($event)" class="file"  [(ngModel)]="video">
+          </div><br>
+          <div class="form-wrapper">
+            <input type="text" placeholder="Titre" class="form-control" [(ngModel)]="titre_cours" >
+          </div><br>
+          <ckeditor  [(ngModel)]="model"></ckeditor>
+
+        <button (click)="afficher()">importer
+        </button>
+        </div>
+
        
         
       

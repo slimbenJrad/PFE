@@ -13,7 +13,6 @@ import { AngularFireDatabase, AngularFireAction } from '@angular/fire/database';
 export class UsersComponent implements OnInit {
   //@input ()name : recupere la varibale name de users/:name dans routing module du adress(admin/parent par exemple)
   @Input() name: string;
-nom="abc"
   log: Observable<any>;
   constructor(private router: ActivatedRoute, private userService: UsersService, private afDatabase: AngularFireDatabase) { }
 

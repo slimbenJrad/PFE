@@ -7,12 +7,16 @@ import { Evenement } from 'src/app/sheared/service/evenement';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { ClasseService } from 'src/app/sheared/service/classe.service';
+import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  public model :any;
   titre: string;
   contenu: string;
   img: File;
@@ -25,12 +29,18 @@ export class DashboardComponent implements OnInit {
   date_ev: Date;//declaritha bech esta3matha fi uplaod w hawaltha lil string 5ater firebase mata9rach date
   imgsrc;
   imgpush;
-  constructor( private afDatabase: AngularFireDatabase,public event:Evenement,private toaste : ToastService,private storage : AngularFireStorage) {
+  affiche:boolean;
+  video: File;
+  titre_cours:string;
+  classe: Observable<any>;
+  constructor(private group: ClasseService, private afDatabase: AngularFireDatabase,public event:Evenement,private toaste : ToastService,private storage : AngularFireStorage) {
     this.mindate = new Date();
-
    }
   ngOnInit(): void {
+    this.classe=this.group.getclasse();
+
   }
+
   chooseFiles(event){
     console.log(event);
     this.selectedFiles = event.target.files;
@@ -79,8 +89,13 @@ export class DashboardComponent implements OnInit {
     this.toaste.showInfo("Alert","evenement en cours de telechargement")
   }
   }
-  
-    
+  afficher(){
+    this.affiche=!this.affiche;
+  } 
+// Partie cours
+
+
+
   }
  /* evenement(titre,contenu,img) {
     this.event.upload(titre,contenu,this.selected)

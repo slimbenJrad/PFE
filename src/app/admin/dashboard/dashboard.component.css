@@ -4,7 +4,12 @@ html, body {
   margin: 0;
   padding: 0;
 }
-
+.file{
+  font-size: 13px;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border: transparent; 
+}
 body {
   align-items: center;
   display: flex;
@@ -8412,9 +8417,9 @@ a[data-toggle="collapse"] {
   color: #000;
   font-size: 13px;
   border-radius: 4px;
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
-  border: transparent; }
+  }
+  form-control :hover {
+    border-color: var(--omrs-color-ink-high-contrast);}
   .form-control:focus, .form-control:active {
     border-color: #000; }
   .form-control::-webkit-input-placeholder {

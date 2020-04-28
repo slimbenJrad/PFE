@@ -17,7 +17,8 @@
         <td>{{user.val.num_Tel}}</td>
         <td>{{user.val.email}}</td>
         <td>{{user.val.code}}</td>
-        
+        <td *ngIf="name === 'eleve'"> <button  mat-raised-button color="primary"
+          [routerLink]="['../../absence',user.key]">Absence</button></td>
       </tr>
     </tbody>
   </table>

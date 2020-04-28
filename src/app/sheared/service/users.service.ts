@@ -25,14 +25,10 @@ export class UsersService {
     )
     return this.user;
   }
-  
+    getUserId(id : any) {
+     return this.afDatabase.object(`user/${id}`).valueChanges();
+
+    }
   }
-  /*getUsersSnap (name : string ){
-    this.user= this.afDatabase.list(`user/${name}`).snapshotChanges().pipe(
-      map(chang=>
-        chang.map(c=>({key: c.payload.key, val : c.payload.val() }))
-        )
-    )
-    return this.user
-  }*/
+  
 

@@ -37,7 +37,6 @@ export class EmploieComponent implements OnInit {
     this.log =  this.userService.getUsers(this.name)
     this.classe=this.group.getclasse();
     console.log('class',this.classe)
-
     })
   }
   doSomething(){
@@ -60,7 +59,8 @@ export class EmploieComponent implements OnInit {
 }
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogComponent, {
-      data: {id: this.selected,
+      data: 
+      {id: this.selected,
       name:this.name}
     });
     dialogRef.afterClosed().subscribe(result => {
