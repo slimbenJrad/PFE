@@ -9,6 +9,7 @@ import { finalize } from 'rxjs/operators';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { ClasseService } from 'src/app/sheared/service/classe.service';
 import { Observable } from 'rxjs';
+import { PublicationService } from 'src/app/sheared/service/publication.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,28 +17,21 @@ import { Observable } from 'rxjs';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  public model :any;
   titre: string;
   contenu: string;
   img: File;
   date_event:any;
   date :Date;
-  selected: any;
   selectedFiles:FileList;
-  file: File;
   mindate: Date;
   date_ev: Date;//declaritha bech esta3matha fi uplaod w hawaltha lil string 5ater firebase mata9rach date
   imgsrc;
   imgpush;
   affiche:boolean;
-  video: File;
-  titre_cours:string;
-  classe: Observable<any>;
-  constructor(private group: ClasseService, private afDatabase: AngularFireDatabase,public event:Evenement,private toaste : ToastService,private storage : AngularFireStorage) {
+  constructor(private afDatabase: AngularFireDatabase,public event:Evenement,private toaste : ToastService,private storage : AngularFireStorage) {
     this.mindate = new Date();
    }
   ngOnInit(): void {
-    this.classe=this.group.getclasse();
 
   }
 
@@ -48,6 +42,7 @@ export class DashboardComponent implements OnInit {
       this.uploadpic();
     }
   }
+  
   async uploadpic(){
     let file = this.selectedFiles.item(0);
     let uniquekey = 'event' +Math.floor(Math.random() *10000000);
@@ -72,6 +67,7 @@ export class DashboardComponent implements OnInit {
       })
     })
   }
+  
   upload(title,contenu,date_ev){
        this.date = new Date();
        console.log(this.date.toString())
@@ -92,7 +88,7 @@ export class DashboardComponent implements OnInit {
   afficher(){
     this.affiche=!this.affiche;
   } 
-// Partie cours
+  
 
 
 

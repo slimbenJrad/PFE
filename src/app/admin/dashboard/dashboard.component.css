@@ -4,7 +4,10 @@ html, body {
   margin: 0;
   padding: 0;
 }
-.file{
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+.file{ 
   font-size: 13px;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;

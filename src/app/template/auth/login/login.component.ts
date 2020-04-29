@@ -46,7 +46,9 @@ goDashbord(){
   if(this.profile.role === 'admin'){
     this.router.navigate(['admin/dashboard']);
   }
-  
+  if(this.profile.role === 'prof'){
+    this.router.navigate(['prof']);
+  }
 
 }
 goDashbord2(){

@@ -13,11 +13,13 @@ import { TestComponent } from './test/test.component';
 import { DashparentComponent } from './parent/dashparent/dashparent.component';
 import {EmploieComponent} from './admin/emploie/emploie.component';
 import {AbsenceComponent} from './admin/absence/absence.component';
+import {ProfComponent} from'./prof/prof.component';
 // a7na 3ana zouz component b nafes el esm "DashboardComponent" donc mahouch bech ya3ref anhi bdhbet eli 
 //bech yemchilha donc na3mlou alias "as DashboardParent " bech nfar9ou binet zouz el comonent andhom nafs el esm
 const routes: Routes = [
   { path: 'test', component: TestComponent },
   { path: 'dashparent', component: DashparentComponent },
+  { path: 'prof', component: ProfComponent },
 
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {

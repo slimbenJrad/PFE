@@ -33,6 +33,8 @@ import { AbsenceComponent } from './admin/absence/absence.component';
 import { HeureComponent } from './admin/absence/heure/heure.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { CKEditorModule } from 'ckeditor4-angular';
+import { MatRadioModule } from '@angular/material/radio';
+import { ProfComponent } from './prof/prof.component';
 
 var config = {
   apiKey: "AIzaSyAZu5KzjBDro5N6D4czheCDGwOmcA9en7A",
@@ -65,6 +67,7 @@ var config = {
     EmploieComponent,
     AbsenceComponent,
     HeureComponent,
+    ProfComponent,
     
 
   ],
@@ -83,7 +86,8 @@ var config = {
     PdfViewerModule,
     MatDialogModule,
     Ng2SearchPipeModule,
-    CKEditorModule
+    CKEditorModule,
+    MatRadioModule
   ],
   entryComponents:[
     DialogComponent,
