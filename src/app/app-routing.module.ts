@@ -14,12 +14,54 @@ import { DashparentComponent } from './parent/dashparent/dashparent.component';
 import {EmploieComponent} from './admin/emploie/emploie.component';
 import {AbsenceComponent} from './admin/absence/absence.component';
 import {ProfComponent} from'./prof/prof.component';
+import {ReunionComponent} from'./parent/reunion/reunion.component';
+import {SuggestionComponent} from'./parent/suggestion/suggestion.component';
+import {ParentComponent } from './parent/parent/parent.component';
+import {EleveComponent } from './eleve/eleve.component';
+import {DevoirComponent } from './eleve/devoir/devoir.component';
+import {MatiereComponent} from './admin/matiere/matiere.component';
+import {PublicationComponent} from './prof/publication/publication.component'
+import {AfficheComponent} from './prof/affiche/affiche.component'
+import {DetailComponent} from './prof/detail/detail.component'
+import {CoursComponent } from './eleve/cours/cours.component';
+import {ElDetailComponent } from './eleve/el-detail/el-detail.component';
+
 // a7na 3ana zouz component b nafes el esm "DashboardComponent" donc mahouch bech ya3ref anhi bdhbet eli 
 //bech yemchilha donc na3mlou alias "as DashboardParent " bech nfar9ou binet zouz el comonent andhom nafs el esm
 const routes: Routes = [
   { path: 'test', component: TestComponent },
-  { path: 'dashparent', component: DashparentComponent },
-  { path: 'prof', component: ProfComponent },
+  { path: 'parent', component: ParentComponent,canActivate: [AuthGuard],
+  //role doit etre ='parent'
+   data: {
+     expecteRole: 'parent'
+   },
+  children: [
+    { path: 'dashparent', component: DashparentComponent},
+    { path: 'reunion', component: ReunionComponent },
+    { path: 'suggestion', component: SuggestionComponent },
+  ] },
+  { path: 'eleve', component: EleveComponent,canActivate: [AuthGuard],
+  //role doit etre ='parent'
+   data: {
+     expecteRole: 'eleve'
+   },
+  children: [
+    { path: 'devoir', component: DevoirComponent}, 
+    { path: 'cours', component: CoursComponent },
+    { path: 'el_detail/:idpub', component: ElDetailComponent},
+
+  ] },
+  { path: 'prof', component: ProfComponent,canActivate: [AuthGuard],
+  //role doit etre ='prof'
+   data: {
+     expecteRole: 'prof'
+   },
+   children: [
+    { path: 'publication', component: PublicationComponent},
+    { path: 'affiche', component: AfficheComponent},
+    { path: 'detail/:pub', component: DetailComponent},
+  ] 
+   },
 
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
@@ -33,6 +75,7 @@ const routes: Routes = [
       { path: 'users/:name', component: UsersComponent },
       { path: 'emploie/:name', component: EmploieComponent },
       { path: 'absence/:id', component: AbsenceComponent },
+      { path: 'matiere', component: MatiereComponent },
 
     ]
   },

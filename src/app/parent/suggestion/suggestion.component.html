@@ -1,0 +1,17 @@
+<mat-radio-group  [(ngModel)]="selection" aria-label="Select an option">
+    <mat-radio-button value="suggestion">suggestion</mat-radio-button>
+    <mat-radio-button value="reclamaion">reclamaion</mat-radio-button>
+    <mat-radio-button value="Question">Question</mat-radio-button>
+  </mat-radio-group>
+  <div class="form-wrapper" *ngIf="selection=='suggestion'">
+    <input type="text" placeholder="Sujet" class="form-control" [(ngModel)]="Sujet" >
+  </div>
+<div class="form-wrapper" *ngIf="selection=='reclamaion'">
+    <input type="text" placeholder="Sujet2" class="form-control" [(ngModel)]="Sujet" >
+  </div>
+  <div class="form-wrapper" *ngIf="selection=='Question'">
+    <input type="text" placeholder="Sujet2" class="form-control" [(ngModel)]="Sujet" >
+  </div>
+  <textarea [(ngModel)]="description" rows="15" cols="50">                             
+</textarea>
+<button (click)="pubsuggestion()">Envoyer</button>

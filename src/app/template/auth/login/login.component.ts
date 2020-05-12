@@ -15,15 +15,17 @@ export class LoginComponent implements OnInit {
   verifedMail : boolean = true ;
   profile : any;
   log : any ;
+  islogged : boolean;
   constructor(private service:AuthService,private router : Router) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {this.islogged = this.service.isLoggedIn
+    console.log(this.islogged)
   }
 async login(email,password){
   this.service.login(email,password);
   setTimeout(()=>{
     this.goDashbord();
-  },1000)
+  },100)
   
 
 /*setTimeout(() => {
@@ -49,7 +51,12 @@ goDashbord(){
   if(this.profile.role === 'prof'){
     this.router.navigate(['prof']);
   }
-
+  if(this.profile.role === 'eleve'){
+    this.router.navigate(['eleve']);
+  }
+  if(this.profile.role === 'parent'){
+    this.router.navigate(['parent/parent']);
+  }
 }
 goDashbord2(){
   this.profile = JSON.parse( localStorage.getItem('profil'));

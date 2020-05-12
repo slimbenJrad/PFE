@@ -49,7 +49,7 @@ h3, h4, h5, h6 {
 	margin-bottom: 20px;
 }
 input, button, select, textarea { 
-    border-radius: 0px !important;
+   /* border-radius: 0px !important;*/
 }
 .timetable{background: #2ab975;padding: 5px 23px;}
 .timetable hr{
@@ -1686,8 +1686,7 @@ margin-top: 15px;
 	
 	.navbar-nav {
 		border-top: none;
-		float: none;
-		width: 100%;
+	
 	}
 .navbar .nav > .active > a, .navbar .nav > .active > a:hover {background: none;font-weight: 700;color: #ea3d69;}
 	header .navbar-nav > li {

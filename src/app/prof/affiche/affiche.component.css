@@ -1,0 +1,10 @@
+.w3-input{padding:8px;display:block;border:none;border-bottom:1px solid #ccc;}
+.example-card .block {
+    width: 50%;
+    margin: 10px
+}
+
+.example-header-image {
+    background-image: url('C:/Users/sloum/Documents/pfe/src/assets/img/icon pdf.jpg');
+    background-size: cover;
+  }

@@ -4,6 +4,7 @@ import { ToastService } from 'src/app/sheared/service/toast.service';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { MatiereService } from './matiere.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +13,11 @@ export class AbsenceService {
   Abs: Observable<any>
 
   constructor(private toaste : ToastService,private afDatabase: AngularFireDatabase) { }
-  addAbsence(heure,date,id_eleve){
+  addAbsence(heure,date,id_eleve,matiere){
         //this.afDatabase.list(`Absence/${this.data.id}`).push({
       this.afDatabase.list(`Absence/`+id_eleve).push({
       nbr:heure,
+      matiere:matiere,
       date_abs:date.toString()
       })
       this.toaste.showSuccess("Ajout avec success " , "success")

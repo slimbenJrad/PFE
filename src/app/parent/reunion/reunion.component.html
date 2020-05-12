@@ -1,0 +1,31 @@
+
+<div class="form-wrapper">
+    <input type="text" placeholder="Titre" class="form-control" [(ngModel)]="nom_eleve" >
+  </div>
+  <div class="form-wrapper">
+    <input type="text" placeholder="Sujet" class="form-control" [(ngModel)]="sujet" >
+  </div>
+  <mat-form-field class="example-full-width">
+    <mat-label>Choose a date </mat-label>
+    <input matInput [min]="mindate" [matDatepicker]="picker" 
+    [(ngModel)]="date_reun">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <div class="24hr-example">
+    <input placeholder="24hr format"  class="w3-input" aria-label="24hr format" [(ngModel)]="heure" [ngxTimepicker]="fullTime" [format]="24"  readonly>
+    <ngx-material-timepicker #fullTime></ngx-material-timepicker>
+</div>
+
+<div class="row" >
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <mat-label>Selectionez un(e) prof</mat-label>
+    <mat-select placeholder="Chosisez un(e) prof"  [(ngModel)]="selectedprof">
+      <mat-option *ngFor="let item of prof | async" value={{item.key}} >{{item.val.firstName}} {{item.val.lastName}}
+      </mat-option>
+    </mat-select>
+    <button (click)="pubreunion()"> Demander Reunion</button>
+  </div>
+  <div class="col-md-4"> </div>
+</div>

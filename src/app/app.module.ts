@@ -35,7 +35,20 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { CKEditorModule } from 'ckeditor4-angular';
 import { MatRadioModule } from '@angular/material/radio';
 import { ProfComponent } from './prof/prof.component';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { ReunionComponent } from './parent/reunion/reunion.component';
+import { SuggestionComponent } from './parent/suggestion/suggestion.component';
+import { ParentComponent } from './parent/parent/parent.component';
+import { EleveComponent } from './eleve/eleve.component';
+import { DevoirComponent } from './eleve/devoir/devoir.component';
+import { MatiereComponent } from './admin/matiere/matiere.component';
+import { DialoComponent } from './admin/matiere/dialo/dialo.component';
+import { PublicationComponent } from './prof/publication/publication.component';
+import { AfficheComponent } from './prof/affiche/affiche.component';
+import { DetailComponent } from './prof/detail/detail.component';
+import { CoursComponent } from './eleve/cours/cours.component';
+import { ElDetailComponent } from './eleve/el-detail/el-detail.component';
 var config = {
   apiKey: "AIzaSyAZu5KzjBDro5N6D4czheCDGwOmcA9en7A",
   authDomain: "pfe-e-34597.firebaseapp.com",
@@ -68,6 +81,18 @@ var config = {
     AbsenceComponent,
     HeureComponent,
     ProfComponent,
+    ReunionComponent,
+    SuggestionComponent,
+    ParentComponent,
+    EleveComponent,
+    DevoirComponent,
+    MatiereComponent,
+    DialoComponent,
+    PublicationComponent,
+    AfficheComponent,
+    DetailComponent,
+    CoursComponent,
+    ElDetailComponent,
     
 
   ],
@@ -87,7 +112,9 @@ var config = {
     MatDialogModule,
     Ng2SearchPipeModule,
     CKEditorModule,
-    MatRadioModule
+    MatRadioModule,
+    NgbModule,
+    NgxMaterialTimepickerModule
   ],
   entryComponents:[
     DialogComponent,

@@ -23,7 +23,7 @@
   <input type="text" [(ngModel)]="term" autocomplete="off" placeholder="  Start searching "    >
   <div *ngFor = "let item of allAbsence |filter:term" >
     <p >
-     ({{item.val.nbr }}) {{item.val.date_abs |date:'medium'}}<button (click)="delete(item.key)">supprimer</button>
+     {{item.val.matiere }}: {{item.val.date_abs |date:'medium'}}<button (click)="delete(item.key)">supprimer</button>
     </p>
 </div> 
 </div>

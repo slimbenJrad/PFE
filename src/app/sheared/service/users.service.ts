@@ -9,7 +9,6 @@ import { query } from '@angular/animations';
 })
 export class UsersService {
   user: Observable<any>
-  user2 : Observable<any> 
 
   constructor(private afDatabase: AngularFireDatabase) { }
 

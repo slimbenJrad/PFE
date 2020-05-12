@@ -74,8 +74,9 @@ export class AuthService {
   async logout() {
     await this.fauth.auth.signOut()
     localStorage.removeItem('user')
-    this.route.navigate(['login'])
+    this.route.navigate(['/home'])
     localStorage.clear();
+    console.log("deconnexion reussite")
   }
   get isLoggedIn() {
     const user = JSON.parse(localStorage.getItem('user'));

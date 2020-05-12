@@ -1,0 +1,26 @@
+<div class="row" >
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <mat-label>Selectionez une classe</mat-label>
+      <mat-select placeholder="Chosisez une classe"  [(ngModel)]="selectedValue">
+        <mat-option *ngFor="let item of classe | async" value={{item.key}} >{{item.val.niveau}} 
+        </mat-option>
+      </mat-select>
+    </div>
+    <div class="col-md-4"> </div>
+  </div>
+  <div class="form-wrapper">
+    <input type="text" placeholder="Titre" class="form-control" [(ngModel)]="titre_cours" >
+  </div><br>
+  <mat-radio-group  [(ngModel)]="selection" aria-label="Select an option">
+    <mat-radio-button value="cours">cours</mat-radio-button>
+    <mat-radio-button value="correction">correction</mat-radio-button>
+    <mat-radio-button value="travail">travail</mat-radio-button>
+  </mat-radio-group><br>
+  <div class="form-wrapper">
+    <input type="file" (change)="choosecours($event)" class="file"  [(ngModel)]="file" accept="application/pdf">
+  </div>
+  <br>
+  <ckeditor  [(ngModel)]="model"></ckeditor>
+
+<button (click)="publi()" >importer</button>

@@ -1,0 +1,31 @@
+<div class="form-wrapper">
+    <input type="text" placeholder="Titre" class="form-control" [(ngModel)]="titre" >
+  </div>
+<div class="row" >
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <mat-label>Selectionez la metiere</mat-label>
+      <mat-select placeholder="Chosisez la matiere" [(value)]="selected" >
+        <mat-option *ngFor="let item of matiere | async" value="{{item.val.nom}}">{{item.val.nom}} 
+        </mat-option>
+      </mat-select>
+  </div>
+  <div class="col-md-4"> </div>
+</div>
+<div class="row" >
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <mat-label>Selectionez un(e) prof</mat-label>
+        <mat-select placeholder="Chosisez un(e) prof"  [(ngModel)]="selectedprof">
+          <mat-option *ngFor="let item of prof | async" value={{item.key}} >{{item.val.firstName}} {{item.val.lastName}}
+          </mat-option>
+        </mat-select>
+    </div>
+    <div class="col-md-4"> </div>
+  </div>
+<div class="form-wrapper">
+    <input type="file" (change)="choose($event)" class="file"  [(ngModel)]="file" accept="application/pdf">
+  </div>
+  <textarea [(ngModel)]="Remarque" rows="15" cols="50">                             
+</textarea>
+<button (click)="envoyer()"> envoyer</button>

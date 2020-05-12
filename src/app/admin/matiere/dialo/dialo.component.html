@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Matiere</h1>
+<div mat-dialog-content>
+    <p>choisiez un nouveau nom</p>
+  </div>
+<div mat-dialog-actions>
+  <div class="form-wrapper">
+    <input type="text" placeholder="Nom" class="form-control" [(ngModel)]="name" >
+</div>
+    <button mat-button mat-dialog-close (click)="nom()" >Changer</button>
+
+  </div>

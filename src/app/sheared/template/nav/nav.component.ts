@@ -10,22 +10,16 @@ import { AngularFireAuth } from '@angular/fire/auth';
 export class NavComponent implements OnInit {
   islogged : boolean;
   isVerif : boolean ; 
+  role:any;
   constructor(private service : AuthService,public fauth: AngularFireAuth) { }
 
   ngOnInit(): void {
     this.islogged = this.service.isLoggedIn
-    
-    /*if(this.islogged){
-      this.fauth.authState.subscribe(data =>{
-        if(data){
-          this.isVerif = data.emailVerified
-        }
-        
-      })
-    }*/
-  
-
+    this.role = JSON.parse(localStorage.getItem('profil'));
+    console.log(this.role.role);
   console.log(this.islogged)
   }
-
+  logout(){
+    this.service.logout()
+  }
 }

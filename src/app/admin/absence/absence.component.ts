@@ -32,23 +32,17 @@ export class AbsenceComponent implements OnInit {
          if(data){
            this.user = data  ;
          }
-       
        })
-      
       this.absenceService.getidAbsence(this.id).subscribe(data=>{
         this.allAbsence=data;
         console.log('obj',this.allAbsence)
-        
         for(let x of this.allAbsence){
-          this.totalHour = this.totalHour+parseInt(x.nbr)
+          this.totalHour = this.totalHour+parseInt(x.val.nbr)
         }
         console.log("totalHour",this.totalHour)
         }
       )
-     
     })
-   
-   
   }
 
 openDialog(): void {console.log(this.term)

@@ -1,0 +1,14 @@
+<div *ngFor="let item of cours | async" class="example-card">
+    <mat-card>
+        <mat-card-header>
+          <!--<button mat-icon-button (click)=""><mat-icon>cloud_download</mat-icon></button>-->
+          <button mat-icon-button (click)="Navigate(item.val.fichier)">
+            <mat-icon>open_in_new</mat-icon>
+          </button>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{item.val.titre}}</mat-card-title>
+        </mat-card-header>
+        <button [routerLink]="['../el_detail',item.key]" routerLinkActive="router-link-active">get cmnt</button>
+      </mat-card>
+     </div>
+    

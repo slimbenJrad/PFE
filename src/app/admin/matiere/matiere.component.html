@@ -1,0 +1,19 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Matiere</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let mat of matiere | async ">
+        <td>{{mat.val.nom}}</td>
+        <td> 
+          </td>     <td > <button  mat-raised-button color="primary"
+            (click)="openDialog(mat)"  >changer nom</button></td>
+        <td > <button  mat-raised-button color="primary"
+           (click)="supp(mat.key)"  >supprimer</button></td>
+      </tr>
+    </tbody>
+  </table>
+<input type="text" placeholder="ecrire le nom de la Matiere" class="form-control" [(ngModel)]="nom_mat" >
+<button   (click)="matire()">codeparent</button>

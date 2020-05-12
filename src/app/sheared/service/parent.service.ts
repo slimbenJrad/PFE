@@ -12,7 +12,7 @@ export class ParentService {
   codeparent(codep:string){
     console.log("code",codep)
    this.user = this.afDatabase.list(`user`, ref =>
-    ref.orderByChild('codeparent').equalTo(codep)
+    ref.orderByChild('code').equalTo(codep)
   ).snapshotChanges().pipe(
     //map a diviser l'objet en key et val()
     map(chang =>
@@ -22,12 +22,12 @@ export class ParentService {
   return this.user;
   
 }
-lier(codep){
-  console.log(codep)
+lier(enf_id){
+  console.log("id enf",enf_id)
    this.fauth.authState.subscribe(auth => {
-    console.log(auth.uid);
-   this.afDatabase.object(`user/${auth.uid}/enf`).update({
-      enfant1 : codep    }).then((rst) => console.log(rst));
+    console.log("uid",auth.uid);
+   this.afDatabase.object(`user/`+enf_id).update({
+      parent : auth.uid  }).then((rst) => console.log(rst));
     })
  }
 }

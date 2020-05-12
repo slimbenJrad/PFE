@@ -1,0 +1,19 @@
+
+.navbar .container{
+    display: inline-block;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+ul.navbar-nav {
+    float: left;
+    padding: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: block;
+}
+header ul.nav li {
+	border:none;
+	margin:0;
+}

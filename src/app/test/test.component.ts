@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { ParentService } from '../sheared/service/parent.service';
+import { AuthService } from '../sheared/service/auth.service';
 
 @Component({
   selector: 'app-test',
@@ -12,13 +13,14 @@ import { ParentService } from '../sheared/service/parent.service';
   styleUrls: ['./test.component.css']
 })
 export class TestComponent implements OnInit {
-
+  islogged : boolean;
   codep : any ;
     user: Observable<any>
     log : any ;
     test = "123456"
-  constructor(private service:ParentService,private router : Router,private afDatabase: AngularFireDatabase) { }
-  ngOnInit(): void {
+  constructor(private authservice : AuthService,private service:ParentService,private router : Router,private afDatabase: AngularFireDatabase) { }
+  ngOnInit(): void {    this.islogged = this.authservice.isLoggedIn
+
   }
    codeparent(codep){
     //console.log(codep)
@@ -33,6 +35,8 @@ export class TestComponent implements OnInit {
     this.service.lier(code)
     console.log(code)
   }
-  
+  deconnexion(){
+    this.authservice.logout()
+  }
   }
 

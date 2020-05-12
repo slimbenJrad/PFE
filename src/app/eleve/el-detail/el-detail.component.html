@@ -1,0 +1,48 @@
+
+<div class="col-md-12" >
+   <div class="col-md-6"> <pdf-viewer 
+    src="{{detail.fichier}}"
+    [render-text]="true" ([page])=1 [fit-to-page]="false"
+    [original-size]="false" [autoresize]="false"
+    style="display: block; height:300px; width: 100%;"></pdf-viewer>  </div>
+   <div class="col-md-6"> 
+     <p  ><label>Titre:</label> {{detail.titre}}
+  </p>   
+    <p ><label>Contenu:</label> <span  [innerHTML]="detail.contenu"></span>
+   </p> 
+    <p><label> Classe:</label>{{detail.classe}}    
+    </p>
+    <p><label> Date:</label><span >{{detail.date_creation |date:'medium'}}</span>  </p>
+    <p><label>Type:</label>{{detail.type}} 
+    </p></div>
+    <div class="block"><div class="block-header"> <img mat-card-avatar
+      src='https://ui-avatars.com/api/?name={{profile.lastName}}+{{profile.firstName}}'> <!--{{user.firstName}} {{user.lastName}}
+      -->    </div>
+<div *ngFor="let i of allcoms"class="block-comment-text">
+      <div class="sous-block">{{i.val.comment}}</div>
+  </div>
+  <div class="input-comment">
+    <textarea (keydown.enter)="sendcomment($event)" 
+      class="block-input-comment"></textarea>
+  </div>
+    <!--<div class="block-header">
+                <div *ngIf="!comment" (click)="yescomment()" class="block-content">Add a comment </div>
+        <div class="input-comment">
+          <textarea (keydown.enter)="sendcomment($event,i.key)" *ngIf="comment"
+            class="block-input-comment"></textarea>
+        </div>
+      </div>
+    <button (click)="getCmnt(i.key)">get cmnt</button>
+    <div class="block"> <div *ngFor="let i of allcoms"class="block-comment-text">
+    <div class="sous-block">{{i.val.comment}}</div>
+</div>
+<div class="col-md-6">
+</div>
+     </div></div>-->
+
+
+       
+
+       
+            
+       

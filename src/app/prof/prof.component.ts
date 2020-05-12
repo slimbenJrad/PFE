@@ -7,6 +7,7 @@ import { UsersService } from '../sheared/service/users.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { PublicationService } from '../sheared/service/publication.service';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap'
 
 @Component({
   selector: 'app-prof',
@@ -18,6 +19,7 @@ export class ProfComponent implements OnInit {
   selected: any;
   selection:any;
   classe: Observable<any>;
+  prof: Observable<any>;
   titre_cours:string;
   file: File;
   public model :any;
@@ -25,20 +27,47 @@ export class ProfComponent implements OnInit {
   user: any;
   profile:any;
   selectedValue:any;
+  selectedprof:any;
   lien:any;
-  constructor(private publication: PublicationService, public fauth: AngularFireAuth,private afDatabase: AngularFireDatabase,private userService: UsersService,private storage : AngularFireStorage,private group: ClasseService,private router: ActivatedRoute) { }
+  cours:Observable<any>;
+  date:Date;
+  comment:boolean;
+  pubcomment:any;
+  date_comment:Date;
+  comm:any;
+  constructor(private publication: PublicationService,public fauth: AngularFireAuth,private afDatabase: AngularFireDatabase,private userService: UsersService,private storage : AngularFireStorage,private group: ClasseService,private router: ActivatedRoute) { }
 
-  ngOnInit(): void {    this.classe=this.group.getclasse();
+  ngOnInit(): void { this.comment=false;
+    this.prof=this.publication.getAllprof();
+    console.log("prof",this.prof)
+     this.date= new Date();
+     this.classe=this.group.getclasse();
     this.profile = JSON.parse( localStorage.getItem('profil'));
 console.log("key",this.profile)
 this.profile= this.fauth.authState.subscribe(data => {
   if (data) {
    this.id=data.uid
+   this.cours=this.publication.getpublication(this.id);
+   this.cours.subscribe(data =>{
+     this.comm=data;
+     console.log("comm",this.comm)
+   })
    console.log("id",this.id)
+   console.log("cours",this.cours)
 }
 })
-}
 
+}
+/*objectValues(obj) {
+  return Object.values(obj);
+}
+yescomment(){
+  this.comment=!this.comment;
+}
+Navigate(url:any){
+  console.log("lien",url)
+    window.open(url, "_blank");
+}
   choosecours(cours){
     console.log("cour",cours);
     this.selectedcours = cours.target.files;
@@ -61,11 +90,20 @@ this.profile= this.fauth.authState.subscribe(data => {
       })
     })
   }
-
   publi(){
     console.log("selectedValue",this.selectedValue)
     if(this.lien){    
-    this.publication.pub(this.titre_cours,this.model,this.file,this.selection,this.id,this.selectedValue,this.lien)
+    this.publication.pub(this.titre_cours,this.model,this.selection,this.id,this.selectedValue,this.lien,this.date.toString())
       } 
     }
-    }
+  supp(id_pub){
+    console.log(this.id)
+    this.publication.deletepub(this.id,id_pub)
+  }
+sendcomment(event,id_pub){
+  console.log("event",event)
+  this.date_comment=new Date();
+  this.publication.comment(event.target.value,id_pub,this.id,this.date_comment.toString()) 
+  this.yescomment()
+}*/
+}

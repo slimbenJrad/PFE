@@ -1,0 +1,26 @@
+ p {
+    display: flex;
+}
+.block-comment-text{
+    margin: 5px 0 5px 0;
+}
+.block {
+    width: 500px;
+    display: block;
+    position: relative;
+    margin-bottom: 14px;
+    font: 400 14px/20px Roboto, "Helvetica Neue", sans-serif;
+    height: auto;
+}
+.sous-block{
+    width: 50%;
+}
+.input-comment{
+    border-radius: 4px;
+}
+.block-content{
+  cursor: pointer;
+}
+.input-comment .block-input-comment{
+    width: 100%;
+}
