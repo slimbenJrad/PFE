@@ -1,43 +1,43 @@
+<div class="container-fluid">
 <div *ngFor="let i of cours">
     <div class="col-md-12" *ngIf="i.key==pub">
-<div class="col-md-12" >
-   <div class="col-md-6"> <pdf-viewer 
+<div class="row" >
+   <div class="col-md-6"> <pdf-viewer
     src="{{i.val.fichier}}"
     [render-text]="true" ([page])=1 [fit-to-page]="false"
     [original-size]="false" [autoresize]="false"
-    style="display: block; height:300px; width: 100%;"></pdf-viewer>  </div>
-   <div class="col-md-6"> 
+    style="display: block; height:auto; width: 100%;"></pdf-viewer>  </div>
+   <div class="col-md-6">
      <p  ><label>Titre:</label><span *ngIf="!titre_vis" (click)="yestitre()">{{i.val.titre}}</span>
     <input *ngIf="titre_vis" style="display: inline-block; width: 40%" type="text" placeholder="Titre" class="form-control" (keydown.enter)="nouveautitre($event)" >
-  </p>   
+  </p>
     <p ><label>Contenu:</label> <span *ngIf="!contenu_vis" (click)="yescontenu()" [innerHTML]="i.val.contenu"></span><input *ngIf="contenu_vis" style="display: inline-block; width: 40%" type="text" placeholder="Contenu" class="form-control" (keydown.enter)="nouveaucontenu($event)" >
-   </p> 
+   </p>
     <p><label> Classe:</label><span *ngIf="!classe_vis"(click)="yesclasse()">{{i.val.classe}}</span>    <input *ngIf="classe_vis" style="display: inline-block; width: 40%" type="text" placeholder="Classe" class="form-control" (keydown.enter)="nouveauclasse($event)" >
     </p>
     <p><label> Date:</label><span >{{i.val.date_creation |date:'medium'}}</span>  </p>
     <p><label>Type:</label><span *ngIf="!type_vis" (click)="yestype()">{{i.val.type}}</span>    <input *ngIf="type_vis" style="display: inline-block; width: 40%" type="text" placeholder="Type" class="form-control" (keydown.enter)="nouveautype($event)" >
-    </p></div>
-    <div class="block-header">
-        <!--<img mat-card-avatar
-              src="https://ui-avatars.com/api/?background=5443ab&color=fff&rounded=true&name={{firstName}}+{{lastName}}">-->
-        <div *ngIf="!comment" (click)="yescomment()" class="block-content">Add a comment </div>
-        <div class="input-comment">
-          <textarea (keydown.enter)="sendcomment($event,i.key)" *ngIf="comment"
-            class="block-input-comment"></textarea>
-        </div>
+    </p>
+    <div *ngFor="let i of allcoms"class="block-comment-text">
+      <div class="buble">
+      <div class="sous-block">
+        <div mat-card-avatar class="example-header-image">
+        <img style="margin-top:0px;" mat-card-image src='https://ui-avatars.com/api/?background=5443ab&color=fff&rounded=true&name={{i.val.lastName}}+{{i.val.firstName}}'>
+         </div>
+         <div style="margin-left:4px;">{{i.val.firstName}} {{i.val.lastName}}
+           <div>{{i.val.comment}}</div></div>
       </div>
-    <button (click)="getCmnt(i.key)">get cmnt</button>
-    <div class="block"> <div *ngFor="let i of allcoms"class="block-comment-text">
-    <div class="sous-block">{{i.val.comment}}</div>
+      </div>
+    </div>
+    <div class="input-comment">
+      <textarea (keydown.enter)="sendcomment($event)"
+        class="block-input-comment" [(ngModel)]="text"></textarea>
+      </div>
 </div>
-<div class="col-md-6">
-</div>
+
      </div></div>
 </div>
+</div>
 
 
-       
 
-       
-            
-       

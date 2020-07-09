@@ -15,15 +15,17 @@
     <div class="col-md-4">
       <mat-label>Selectionez une classe</mat-label>
       <mat-select placeholder="Chosisez une classe" [(value)]="selected" (selectionChange)="doSomething()">
-        <mat-option *ngFor="let item of classe | async" value="{{item.key}}">{{item.val.niveau}} 
+        <mat-option *ngFor="let item of classe | async" value="{{item.key}}">{{item.val.niveau}}
         </mat-option>
       </mat-select>
     </div>
     <div class="col-md-4"> </div>
   </div>
   <div *ngIf="selected" >
+    <button *ngIf="!(empl)" class="update " mat-raised-button color="primary"
+        (click)="openDialog()">Affecter</button>
     <div *ngIf="empl" class="emploie">
- <pdf-viewer 
+ <pdf-viewer
       src="{{empl.horaire}}"
       [render-text]="true" ([page])=1 [fit-to-page]="false"
       [original-size]="false" [autoresize]="false"
@@ -34,4 +36,3 @@
         (click)="openDialog()">update</button></div>
   </div>
 </div>
-  

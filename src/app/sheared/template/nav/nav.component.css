@@ -1,3 +1,10 @@
+p{
+  font-size: medium;
+  margin-left: 120px;
+  color: darkgrey;
+  font-family: cursive;
+}
+
 
 .navbar .container{
     display: inline-block;

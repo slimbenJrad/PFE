@@ -1,38 +1,25 @@
 
-    <!--<div class="form-wrapper">
-        <input type="text" placeholder="Titre" class="form-control" #titre>
-      </div>
-      <div class="form-wrapper">
-        <input type="text" placeholder="contenu" class="form-control" #contenu>
-      </div>-->
       <div class="form">
-        <h3>Register Form</h3>
+        <h3>Formulaire d'Evenement</h3>
         <div class="form-wrapper">
           <input type="text" placeholder="Titre" class="form-control" [(ngModel)]="titre" >
         </div>
         <div class="form-wrapper">
           <input type="text" placeholder="contenu" class="form-control"  [(ngModel)]="contenu">
         </div>
-        <div class="form-wrapper">
-          <input type="file" (change)="chooseFiles($event)" class="file"  [(ngModel)]="img">
-        </div>
+        <label><input class="file-input" type="file"(change)="chooseFiles($event)"   [(ngModel)]="img">
+          <i class="fa fa-upload"></i>Choose file</label>
+          <span *ngIf="selectedFiles">
+            <strong>Chosen File:</strong>
+            <span>{{selectedFiles.item(0).name}}</span>
+          </span>
       </div>
     <mat-form-field class="example-full-width">
       <mat-label>Choose a date </mat-label>
-      <input matInput [min]="mindate" [matDatepicker]="picker" 
+      <input matInput [min]="mindate" [matDatepicker]="picker"
       [(ngModel)]="date_ev"><!--3malt ngmodel bech n5arej el resultas mta3 el input w nesta3melou fi upload-->
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-
-        <button (click)="upload(titre,contenu,date_ev)">ajouter
+        <button class="ajouter" (click)="upload(titre,contenu,date_ev)">Ajouter
         </button>
-        <!--partie cours-->
-        <button (click)="afficher()">afficher
-        </button>
-        
-        
-
-       
-        
-      

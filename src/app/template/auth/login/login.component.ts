@@ -16,18 +16,24 @@ export class LoginComponent implements OnInit {
   profile : any;
   log : any ;
   islogged : boolean;
-  constructor(private service:AuthService,private router : Router) { }
+  verified:any;
+  constructor(private service:AuthService,private router : Router,public fauth: AngularFireAuth) { }
 
   ngOnInit(): void {this.islogged = this.service.isLoggedIn
     console.log(this.islogged)
+    this.profile = JSON.parse( localStorage.getItem('profil'));
+console.log("key",this.profile)
+this.profile= this.fauth.authState.subscribe(data => {
+  if (data) {
+   this.verified=data.emailVerified;
+   console.log(this.verified)}})
   }
 async login(email,password){
-  this.service.login(email,password);
-  setTimeout(()=>{
+   this.log= this.service.login(email,password).then(() =>  setTimeout(() => {
     this.goDashbord();
-  },100)
-  
-
+ }, 1000)      );
+    
+   
 /*setTimeout(() => {
    this.fauth.authState.subscribe(data =>{
     this.verifedMail = data.emailVerified
@@ -43,8 +49,8 @@ logout(){
 }
 goDashbord(){
   this.profile = JSON.parse( localStorage.getItem('profil'));
-  
-    console.log(this.profile.role);
+  console.log(this.profile.role);
+  setTimeout(()=>{
   if(this.profile.role === 'admin'){
     this.router.navigate(['admin/dashboard']);
   }
@@ -55,8 +61,9 @@ goDashbord(){
     this.router.navigate(['eleve']);
   }
   if(this.profile.role === 'parent'){
-    this.router.navigate(['parent/parent']);
+    this.router.navigate(['parent/dashparent']);
   }
+  },2000)
 }
 goDashbord2(){
   this.profile = JSON.parse( localStorage.getItem('profil'));

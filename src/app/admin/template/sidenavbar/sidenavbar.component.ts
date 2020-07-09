@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/sheared/service/auth.service';
 
 @Component({
   selector: 'app-sidenavbar',
@@ -10,7 +11,7 @@ export class SidenavbarComponent implements OnInit {
   contentMargin = 240;
   droppedList = false;
   droppedempl = false;
-  constructor() { }
+  constructor(private service : AuthService) { }
 
   ngOnInit(): void {
   }
@@ -29,5 +30,8 @@ export class SidenavbarComponent implements OnInit {
   }
   dropemploie(){
     this.droppedempl = !this.droppedempl;
+  }
+  logout(){
+    this.service.logout()
   }
 }

@@ -5,7 +5,9 @@
   background-color: white;
   height: 100%;
 }
-
+mat-label{
+  color: blue;
+}
 .update{
   float: right;
 }

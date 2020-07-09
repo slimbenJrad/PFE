@@ -18,11 +18,13 @@ nom_eleve:string;
 sujet:string;
 mindate:Date;
 date_reun: Date;
+fullname:string;
+state;
   constructor(private publication: PublicationService,public fauth: AngularFireAuth) {     this.mindate = new Date();
   }
 
   ngOnInit(): void {    this.profile = JSON.parse( localStorage.getItem('profil'));
-  this.profile= this.fauth.authState.subscribe(data => {
+  this.state= this.fauth.authState.subscribe(data => {
     if (data) {
      this.id_parent=data.uid
      console.log("id",this.id_parent)
@@ -32,6 +34,13 @@ date_reun: Date;
     console.log("prof",this.prof)
   }
   pubreunion(){
-    this.publication.reunion(this.nom_eleve,this.sujet,this.date_reun.toString(),this.heure,this.id_parent,this.selectedprof)
+    console.log("nom",this.profile.firstName,this.profile.lastName)
+    this.publication.reunion(
+      this.nom_eleve,
+      this.sujet,
+      this.date_reun.toString(),
+      this.heure,
+      this.id_parent,
+      this.selectedprof.key,this.selectedprof.val.lastName,this.selectedprof.val.firstName,this.profile.firstName,this.profile.lastName,this.profile.email)
   }
 }

@@ -32,15 +32,11 @@ export class DashboardComponent implements OnInit {
     this.mindate = new Date();
    }
   ngOnInit(): void {
-
   }
 
   chooseFiles(event){
     console.log(event);
     this.selectedFiles = event.target.files;
-    if(this.selectedFiles.item(0)){
-      this.uploadpic();
-    }
   }
   
   async uploadpic(){
@@ -71,6 +67,7 @@ export class DashboardComponent implements OnInit {
   upload(title,contenu,date_ev){
        this.date = new Date();
        console.log(this.date.toString())
+       this.uploadpic();
        if(this.imgpush){
     this.afDatabase.list(`event`).push({
       img:this.imgpush,

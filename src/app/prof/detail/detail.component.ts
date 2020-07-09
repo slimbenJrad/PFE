@@ -16,7 +16,7 @@ export class DetailComponent implements OnInit {
   cours:any;
   profile:any;
   allcoms:Observable<any>;
-  comment:boolean;
+  text:any;
   date_comment:Date;
   titre:string;
   titre_vis:boolean;
@@ -28,11 +28,23 @@ export class DetailComponent implements OnInit {
   classe:any;
   date_cours:any;
   type:any;
+  person:any;
   constructor(private router: ActivatedRoute,private publication: PublicationService,public fauth: AngularFireAuth) { }
 
   ngOnInit(): void { 
+    this.titre_vis=false;
+    this.classe_vis=false;
+    this.contenu_vis=false;
+    this.date_vis=false;
+    this.type_vis=false;
+    this.person = JSON.parse( localStorage.getItem('profil'));
     this.router.paramMap.subscribe(params => {
     this.pub = params.get('pub');
+    this.allcoms=this.publication.getcomment(this.pub)
+    this.allcoms.subscribe(data=>{
+      this.allcoms = data
+      console.log("all cmntr",data)
+    })
     this.profile= this.fauth.authState.subscribe(data => {
        this.id=data.uid
        this.cours=this.publication.getpublication(this.id).subscribe(data => {
@@ -42,20 +54,6 @@ export class DetailComponent implements OnInit {
       
 
   }
-  getCmnt(id_pub){    this.titre_vis=false;
-    this.classe_vis=false;
-    this.contenu_vis=false;
-    this.date_vis=false;
-    this.type_vis=false;
-    this.comment=false;
-    this.allcoms=this.publication.getcomment(id_pub)
-    this.allcoms.subscribe(data=>{
-      this.allcoms = data
-      console.log("all cmntr",data)
-    })
-  }
-  yescomment(){
-  this.comment=!this.comment;}
  yestitre(){
   this.titre_vis=!this.titre_vis;}
   yesclasse(){
@@ -66,11 +64,12 @@ export class DetailComponent implements OnInit {
    this.date_vis=!this.date_vis;}
   yestype(){
    this.type_vis=!this.type_vis;}
-  sendcomment(event,id_pub){
+  sendcomment(event){
     console.log("event",event)
     this.date_comment=new Date();
-    this.publication.comment(event.target.value,id_pub,this.id,this.date_comment.toString()) 
-    }
+    this.publication.comment(event.target.value,this.pub,this.id,this.date_comment.toString(),this.person.firstName,this.person.firstName) 
+    this.text="" 
+  }
     nouveautitre(event){
       this.publication.changetitre(this.pub,event.target.value)
       this.yestitre()
@@ -87,4 +86,16 @@ export class DetailComponent implements OnInit {
       this.publication.changeclasse(this.pub,event.target.value)
       this.yescontenu()
     }
+    /* getCmnt(id_pub){    this.titre_vis=false;
+    this.classe_vis=false;
+    this.contenu_vis=false;
+    this.date_vis=false;
+    this.type_vis=false;
+    this.comment=false;
+    this.allcoms=this.publication.getcomment(id_pub)
+    this.allcoms.subscribe(data=>{
+      this.allcoms = data
+      console.log("all cmntr",data)
+    })
+  }*/
 }

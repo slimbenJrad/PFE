@@ -1,0 +1,18 @@
+<div class="container-fluid">
+    <div class="chat-container">
+      <div *ngFor="let item of message">
+        <div *ngIf="item.val.user==id_par">
+       <i> {{ item.val.name }} {{ item.val.lastname }}</i> <br/>
+     </div>
+     <div *ngIf="item.val.user!==id_par">
+       <i class="right"> {{ item.val.name }} {{ item.val.lastname }}</i> <br/>
+     </div>
+      <div *ngIf="item.val.user==id_par"> <div class="me"  >{{item.val.text}}
+       </div></div>
+       <div *ngIf="item.val.user!==id_par" class="others">{{item.val.text}}</div>
+     </div>
+  </div>
+  <div class="input-container" >
+  <input type="text" class="message"  placeholder="Chat here..." (keydown.enter)="send($event)" [(ngModel)]="text" >
+  </div>
+  </div>

@@ -49,6 +49,19 @@ import { AfficheComponent } from './prof/affiche/affiche.component';
 import { DetailComponent } from './prof/detail/detail.component';
 import { CoursComponent } from './eleve/cours/cours.component';
 import { ElDetailComponent } from './eleve/el-detail/el-detail.component';
+import { ChatComponent } from './chat/chat.component';
+import { SoloComponent } from './eleve/solo/solo.component';
+import { EnfantChatComponent } from './parent/enfant-chat/enfant-chat.component';
+import { AffecterComponent } from './admin/affecter/affecter.component';
+import { ProfchatComponent } from './prof/profchat/profchat.component';
+import { ProfsoloComponent } from './eleve/profsolo/profsolo.component';
+import { DemandeComponent } from './prof/demande/demande.component';
+import { AcceptComponent } from './parent/accept/accept.component';
+import { InboxComponent } from './admin/inbox/inbox.component';
+import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
+import { ProfileComponent } from './profile/profile.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+
 var config = {
   apiKey: "AIzaSyAZu5KzjBDro5N6D4czheCDGwOmcA9en7A",
   authDomain: "pfe-e-34597.firebaseapp.com",
@@ -93,7 +106,17 @@ var config = {
     DetailComponent,
     CoursComponent,
     ElDetailComponent,
-    
+    ChatComponent,
+    SoloComponent,
+    EnfantChatComponent,
+    AffecterComponent,
+    ProfchatComponent,
+    ProfsoloComponent,
+    DemandeComponent,
+    AcceptComponent,
+    InboxComponent,
+    ProfileComponent,
+
 
   ],
   imports: [
@@ -107,14 +130,16 @@ var config = {
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     MaterialModule,
-    AngularFireStorageModule, 
+    AngularFireStorageModule,
     PdfViewerModule,
     MatDialogModule,
     Ng2SearchPipeModule,
     CKEditorModule,
     MatRadioModule,
     NgbModule,
-    NgxMaterialTimepickerModule
+    NgxMaterialTimepickerModule,
+    TextareaAutosizeModule,
+    FullCalendarModule
   ],
   entryComponents:[
     DialogComponent,

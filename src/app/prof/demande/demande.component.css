@@ -1,0 +1,10 @@
+.cards{
+    padding: 7px;
+}
+.accepter{
+    background-color: #69F0AE;
+  }
+  .refuser{
+    background-color: red;
+  }
+  

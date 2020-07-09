@@ -34,4 +34,11 @@ changename(id_mat,nom){
     nom:nom,
   })
 }
+Affectation(id_prof,classe,matiere,name){
+this.afDatabase.list(`Affectation/`+id_prof+`/`+classe).push({
+nom:name,
+id:matiere
+})
+this.toaste.showSuccess("Affectation avec success " , "success")
+}
 }

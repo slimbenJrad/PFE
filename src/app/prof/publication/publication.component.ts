@@ -29,17 +29,18 @@ export class PublicationComponent implements OnInit {
   selectedprof:any;
   lien:any;
   date:Date;
+  state;
   constructor(private publication: PublicationService,public fauth: AngularFireAuth,private afDatabase: AngularFireDatabase,private userService: UsersService,private storage : AngularFireStorage,private group: ClasseService,private router: ActivatedRoute) { }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     console.log("publication")
     this.prof=this.publication.getAllprof();
     console.log("prof",this.prof)
      this.date= new Date();
      this.classe=this.group.getclasse();
     this.profile = JSON.parse( localStorage.getItem('profil'));
-console.log("key",this.profile)
-this.profile= this.fauth.authState.subscribe(data => {
+console.log("key",this.profile.firstName)
+this.state= this.fauth.authState.subscribe(data => {
   if (data) {
    this.id=data.uid
    console.log("id",this.id)
@@ -71,8 +72,8 @@ uplaodcours(){
 
 publi(){
   console.log("selectedValue",this.selectedValue)
-  if(this.lien){    
-  this.publication.pub(this.titre_cours,this.model,this.selection,this.id,this.selectedValue,this.lien,this.date.toString())
-    } 
+  if(this.lien){
+  this.publication.pub(this.titre_cours,this.model,this.selection,this.id,this.selectedValue,this.lien,this.date.toString(),this.profile.lastName,this.profile.firstName)
+    }
   }
 }

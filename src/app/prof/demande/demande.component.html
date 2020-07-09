@@ -1,0 +1,23 @@
+<div class="cards" *ngFor="let item of log" >
+  <div  *ngIf="(item.val.date| date: 'shortDate').toString()>=today ">
+    <mat-card class="example-card"  >
+      <mat-card-header>
+      <mat-card-title>Reunion</mat-card-title>
+      <mat-card-subtitle>{{item.val.prenom_parent}} {{item.val.nom_parent}}</mat-card-subtitle>
+      </mat-card-header> 
+    
+      <mat-card-content>
+        <h3>{{item.val.nom_eleve}} </h3><hr>
+      <h3>{{item.val.sujet}}</h3>
+      </mat-card-content>
+    
+      <mat-card-actions>
+      <button mat-raised-button class="accepter" (click)="accept(item.key)">Accepter</button>
+      <button mat-raised-button class="refuser" (click)="refuse(item.key)">Refuser</button>
+      </mat-card-actions>
+      </mat-card>   
+    </div>
+    </div>
+          
+      
+    

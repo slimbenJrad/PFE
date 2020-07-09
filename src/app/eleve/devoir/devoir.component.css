@@ -1,0 +1,30 @@
+button {
+    display: block;
+}
+.file-input{
+    display: none;
+  }
+  i{padding: 2px;
+  }
+  label{
+    padding: 8px;
+    width: fit-content;
+    border-radius: 5px;
+    color: aliceblue;
+    background-color: #ff4081;
+    display: block;/*tala3ha fou9 el textarea*/
+  }
+  label:hover{
+    background-color:#ff4081;
+    cursor: pointer;
+    color: lightgray;
+  }
+  mat-label{
+    color: tomato;
+}
+.abc{
+  color: brown;
+}
+ .mat-select-placeholder {
+  color:red !important;
+}

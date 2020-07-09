@@ -1,0 +1,21 @@
+<div class="row" >
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <mat-label>Selectionez un(e) Prof(e)</mat-label>
+      <mat-select placeholder="Chosisez un(e) Prof(e)"  [(ngModel)]="selectedProf" >
+        <mat-option *ngFor="let item of prof " value={{item.key}} >{{item.val.firstName}} {{item.val.lastName}}
+        </mat-option>
+      </mat-select>
+      <mat-label>Selectionez une classe</mat-label>
+      <mat-select placeholder="Chosisez une classe"  [(ngModel)]="selectedClasse">
+        <mat-option *ngFor="let item of classe | async" value={{item.key}} >{{item.val.niveau}} 
+        </mat-option>
+      </mat-select>
+      <mat-label>Selectionez une matiere</mat-label>
+      <mat-select placeholder="Chosisez une matiere"  [(ngModel)]="selectedMatiere" >
+        <mat-option *ngFor="let item of matiere | async" [value]="item">{{item.val.nom}} 
+        </mat-option>
+      </mat-select>
+      <button class="update " mat-raised-button color="primary"
+        (click)="affecter()">Affecter</button>
+      </div>

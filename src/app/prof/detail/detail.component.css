@@ -4,6 +4,10 @@
 .block-comment-text{
     margin: 5px 0 5px 0;
 }
+.mat-card-image {
+  width: calc(70% + 16px);
+  margin: -6px -1px 0px;
+}
 .block {
     width: 500px;
     display: block;
@@ -12,9 +16,6 @@
     font: 400 14px/20px Roboto, "Helvetica Neue", sans-serif;
     height: auto;
 }
-.sous-block{
-    width: 50%;
-}
 .input-comment{
     border-radius: 4px;
 }
@@ -22,5 +23,22 @@
   cursor: pointer;
 }
 .input-comment .block-input-comment{
-    width: 100%;
+    width: 50%;
 }
+.sous-block{
+    display: flex;
+    word-break:break-word;
+}
+.block-comment-text {
+    padding-bottom: 5px;
+}
+
+.buble{
+        min-width: 501px;
+    max-width: fit-content;
+    word-wrap: break-word;
+    border:  #ccc!important;
+    background-color: #f2f3f5;
+    border-radius: 20px;
+}
+

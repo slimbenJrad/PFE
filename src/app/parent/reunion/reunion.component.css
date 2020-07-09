@@ -1,0 +1,22 @@
+.example-full-width{
+    margin-bottom: 10px;
+}
+.w3-input{ padding: 15px 22px;
+    box-sizing: border-box;
+    border: 2px solid rgb(231, 12, 133);
+    margin: 10px 5px;
+    height: 35px;
+    border-radius: 5px;}
+    .mat-raised-button{
+        margin: 40px 0;
+        }
+        .example-full-width{
+margin: 5px;
+        }
+        mat-label{
+            color: tomato;
+        }
+         .abc{
+            color: brown;
+        }
+       

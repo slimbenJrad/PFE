@@ -1,0 +1,36 @@
+.textarea { /*autoresize pour les labels(et les <p> peut etre ) */
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    resize: both;
+    min-height: 40px;
+    line-height: 20px;
+}
+.date {
+     margin-bottom: 0;
+}
+textarea{
+    width:100%;
+	line-height:1.5;
+	padding:10px;
+	border-radius:3px;
+    /*border:1px solid #F7E98D;*/
+    border-color: blue;
+	transition:box-shadow 0.5s ease;
+	overflow: hidden; 
+    font-family:sans-serif;
+    outline: none;
+    min-height:100px;
+    max-height:314px;
+    height: auto;
+}
+div{
+    margin: 7px;
+}
+mat-card-title{
+    color: royalblue;
+}
+
+.mat-raised-button{
+    color: blue;
+}

@@ -25,11 +25,19 @@ import {AfficheComponent} from './prof/affiche/affiche.component'
 import {DetailComponent} from './prof/detail/detail.component'
 import {CoursComponent } from './eleve/cours/cours.component';
 import {ElDetailComponent } from './eleve/el-detail/el-detail.component';
-
-// a7na 3ana zouz component b nafes el esm "DashboardComponent" donc mahouch bech ya3ref anhi bdhbet eli 
+import {ChatComponent} from './chat/chat.component'
+import {SoloComponent } from './eleve/solo/solo.component';
+import {EnfantChatComponent} from'./parent/enfant-chat/enfant-chat.component';
+import {AffecterComponent} from './admin/affecter/affecter.component';
+import {ProfchatComponent} from './prof/profchat/profchat.component'
+import {ProfsoloComponent } from './eleve/profsolo/profsolo.component';
+import {DemandeComponent} from './prof/demande/demande.component'
+import {AcceptComponent} from'./parent/accept/accept.component';
+import {InboxComponent} from './admin/inbox/inbox.component';
+import {ProfileComponent} from './profile/profile.component';
+// a7na 3ana zouz component b nafes el esm "DashboardComponent" donc mahouch bech ya3ref anhi bdhbet eli
 //bech yemchilha donc na3mlou alias "as DashboardParent " bech nfar9ou binet zouz el comonent andhom nafs el esm
 const routes: Routes = [
-  { path: 'test', component: TestComponent },
   { path: 'parent', component: ParentComponent,canActivate: [AuthGuard],
   //role doit etre ='parent'
    data: {
@@ -38,7 +46,11 @@ const routes: Routes = [
   children: [
     { path: 'dashparent', component: DashparentComponent},
     { path: 'reunion', component: ReunionComponent },
+    { path: 'accepté', component: AcceptComponent},
     { path: 'suggestion', component: SuggestionComponent },
+    { path: 'enfantchat/:id', component: EnfantChatComponent },
+    { path: 'profile', component: ProfileComponent},
+    { path: 'test', component: TestComponent }
   ] },
   { path: 'eleve', component: EleveComponent,canActivate: [AuthGuard],
   //role doit etre ='parent'
@@ -46,10 +58,15 @@ const routes: Routes = [
      expecteRole: 'eleve'
    },
   children: [
-    { path: 'devoir', component: DevoirComponent}, 
+    { path: 'devoir', component: DevoirComponent},
     { path: 'cours', component: CoursComponent },
     { path: 'el_detail/:idpub', component: ElDetailComponent},
-
+    { path: 'solochat/:id', component: SoloComponent },
+    { path: 'chat', component: ChatComponent },
+    { path: 'profsolo/:id', component: ProfsoloComponent },
+    { path: 'devoir', component: DevoirComponent},
+    { path: 'profile', component: ProfileComponent},
+    { path: 'test', component: TestComponent }
   ] },
   { path: 'prof', component: ProfComponent,canActivate: [AuthGuard],
   //role doit etre ='prof'
@@ -59,8 +76,12 @@ const routes: Routes = [
    children: [
     { path: 'publication', component: PublicationComponent},
     { path: 'affiche', component: AfficheComponent},
+    { path: 'demande', component: DemandeComponent},
     { path: 'detail/:pub', component: DetailComponent},
-  ] 
+    { path: 'profchat/:id', component: ProfchatComponent},
+    { path: 'profile', component: ProfileComponent},
+    { path: 'test', component: TestComponent }
+  ]
    },
 
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -76,10 +97,11 @@ const routes: Routes = [
       { path: 'emploie/:name', component: EmploieComponent },
       { path: 'absence/:id', component: AbsenceComponent },
       { path: 'matiere', component: MatiereComponent },
-
+      { path: 'affecter', component: AffecterComponent},
+      { path: 'inbox', component: InboxComponent},
+      { path: 'profile', component: ProfileComponent},
     ]
   },
-
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },

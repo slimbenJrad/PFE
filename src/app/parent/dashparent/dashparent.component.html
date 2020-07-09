@@ -2,21 +2,17 @@
 <div> 
 <label> entrer code parent</label>
 <input type="text" class="form-control" placeholder="Codep"  #codep>
-<button (click)="codeparent(codep.value)">codeparent</button>
+<button mat-raised-button color="accent" (click)="codeparent(codep.value)">codeparent</button>
 <div class="container">
     <mat-card class="example-card">
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image">
-              <img mat-card-image  *ngFor="let user of log "  src='https://ui-avatars.com/api/?name={{user.val.lastName}}+{{user.val.firstName}}'>  
-          </div>
-          <mat-card-title><p *ngFor="let user of log " >{{user.val.firstName}}</p></mat-card-title>
-          <mat-card-subtitle><p *ngFor="let user of log " >{{user.val.lastName}}</p></mat-card-subtitle>
-        </mat-card-header>  
-        <mat-card-actions>
-            <div *ngFor="let user of log ">
-            <button  mat-button (click)="lier(user.key)">codeparent</button>
-        </div>
-        </mat-card-actions>
+        <mat-card-header *ngFor="let user of log ">
+    <div mat-card-avatar class="example-header-image">
+        <img mat-card-image    src='https://ui-avatars.com/api/?background=5443ab&color=fff&rounded=true&name={{user.val.lastName}}+{{user.val.firstName}}'>  
+    </div>
+    <mat-card-title>{{user.val.lastName}}</mat-card-title>
+    <mat-card-subtitle>{{user.val.firstName}}</mat-card-subtitle>
+    <button  mat-raised-button color="accent" (click)="lier(user.key)">codeparent</button>
+  </mat-card-header>
       </mat-card>
   </div>
 </div>

@@ -1,0 +1,33 @@
+<div class="card">
+    <p><button>Profile</button></p>
+    <div class="info"> <i class="fa fa-id-card" aria-hidden="true"></i>
+      <h1 *ngIf="!prenom_vis"(click)="showprenom()">: {{user.firstName}}        
+      </h1><input *ngIf="prenom_vis" style="display: inline-block; width: 40%" type="text" placeholder="Prenom" class="form-control" (keydown.enter)="nouveauprenom($event)" >
+      <h1 *ngIf="!nom_vis"(click)="shownom()">{{user.lastName}} 
+      </h1><input *ngIf="nom_vis" style="display: inline-block; width: 40%" type="text" placeholder="Nom" class="form-control" (keydown.enter)="nouveaunom($event)" >
+    </div>
+    <div class="info"> <mat-icon>mail</mat-icon> <h1 *ngIf="!mail_vis"(click)="mail()">:{{user.email}}</h1>  
+        <input *ngIf="mail_vis" style="display: inline-block; width: 40%" type="text" placeholder="@Mail" class="form-control" (keydown.enter)="nouveaumail($event)" >
+    </div>
+    <div class="info"> <mat-icon>local_phone</mat-icon> <h1 *ngIf="!tel_vis"(click)="num()">:{{user.num_Tel}}</h1>
+        <input *ngIf="tel_vis" style="display: inline-block; width: 40%" type="text" placeholder="Num tel" class="form-control" (keydown.enter)="nouveaunum($event)" >
+    </div>
+    <div class="info"> <i class="fa fa-briefcase"  aria-hidden="true"></i> <h1 >:{{user.role}}</h1>
+    </div>
+    <div class="info" *ngIf="profile.role=='eleve'"><i  class="fa fa-id-badge"></i><h1 *ngIf="!classe_vis"(click)="classe()">:{{user.code}}
+    </h1>
+    <input *ngIf="classe_vis" style="display: inline-block; width: 40%" type="text" placeholder="Classe" class="form-control" (keydown.enter)="nouveauclasse($event)" >
+</div>
+    <div class="prof" *ngIf="profile.role=='prof'">
+        <div class="all" *ngFor="let item of All">
+        <i  class="fa fa-users" aria-hidden="true"></i><h1 *ngIf="!classe_vis"(click)="classe()">:{{item.key}}</h1> 
+        <mat-icon class="delete" (click)="delete(item.key)">delete</mat-icon>
+        <input *ngIf="classe_vis" style="display: inline-block; width: 40%" type="text" placeholder="Classe" class="form-control" (keydown.enter)="nouveauclasse($event)" >
+    </div>
+</div>
+    <div class="info" *ngIf="profile.role=='eleve'"><mat-icon>supervised_user_circle</mat-icon><h1 >:{{parent.firstName}}{{parent.lastName}}</h1></div>
+    <div class="info" *ngIf="profile.role=='parent'">
+ <div class="enfant" *ngFor="let item of enfant">
+    <mat-icon>child_friendly</mat-icon><h1 >:{{item.val.firstName}} {{item.val.lastName}}</h1></div>  
+</div>
+</div>

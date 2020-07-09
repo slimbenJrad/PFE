@@ -1,6 +1,7 @@
+<div class="container-fluid">
 
 <div class="form-wrapper">
-    <input type="text" placeholder="Titre" class="form-control" [(ngModel)]="nom_eleve" >
+    <input type="text" placeholder="Nom Eleve" class="form-control" [(ngModel)]="nom_eleve" >
   </div>
   <div class="form-wrapper">
     <input type="text" placeholder="Sujet" class="form-control" [(ngModel)]="sujet" >
@@ -21,11 +22,12 @@
   <div class="col-md-4"></div>
   <div class="col-md-4">
     <mat-label>Selectionez un(e) prof</mat-label>
-    <mat-select placeholder="Chosisez un(e) prof"  [(ngModel)]="selectedprof">
-      <mat-option *ngFor="let item of prof | async" value={{item.key}} >{{item.val.firstName}} {{item.val.lastName}}
+    <mat-select  placeholder="Chosisez un(e) prof"  [(ngModel)]="selectedprof">
+      <mat-option class="abc" *ngFor="let item of prof | async" [value]="item" >{{item.val.firstName}} {{item.val.lastName}}
       </mat-option>
     </mat-select>
-    <button (click)="pubreunion()"> Demander Reunion</button>
+    <button mat-raised-button color="accent" (click)="pubreunion()"> Demander Reunion</button>
   </div>
   <div class="col-md-4"> </div>
+</div>
 </div>

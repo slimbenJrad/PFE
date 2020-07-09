@@ -1,4 +1,292 @@
+<div class="container-scroller">
+  <!-- partial:partials/_navbar.html -->
+  <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+    <a class="navbar-brand" href="index.html"><i
+      class="icon-info-blocks material-icons">account_balance</i>Kids<strong style="color:deeppink;">Academy</strong></a>
+    <div class="navbar-menu-wrapper d-flex align-items-stretch">
+      <ul class="navbar-nav navbar-nav-right">
+        <li class="nav-item nav-profile dropdown">
+          <a  href="#" aria-expanded="false">
+            <h3 class="page-title">
+              <span class="page-title-icon bg-gradient-primary text-white mr-2">
+                <i class="mdi mdi-home"></i>
+              </span></h3>
+          </a>
+        </li>
 
-<app-nav></app-nav>
-<div class="container">
-<router-outlet></router-outlet></div>
+        <li class="nav-item dropdown">
+          <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+            <i class="mdi mdi-email-outline" style="font-size: 20px;"></i>
+            <span *ngIf="untouched.length>0" class="count-symbol bg-warning"></span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
+            <h6  class="p-3 mb-0">Messages</h6>
+            <div  *ngFor="let item of notif" >
+            <div class="dropdown-divider"></div>
+            <div >
+            <a class="dropdown-item preview-item" (click)="reverse(item.key)" [routerLink]="['/parent/enfantchat',item.val.sender_id]">
+              <div class="preview-thumbnail" >
+                <img src='https://ui-avatars.com/api/?background=5443ab&color=fff&rounded=true&name={{item.val.sender_name}}+{{item.val.sender_lastname}}' alt="image" class="profile-pic">
+              </div>
+              <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                <h6 class="preview-subject ellipsis mb-1 font-weight-normal">{{item.val.sender_name}} {{item.val.sender_lastname}} vous a envoyer un message</h6>
+                <p class="text-gray mb-0"> {{item.val.date|date:'short'}} </p>
+              </div><i *ngIf="item.val.touched==true" class="fa fa-check" style="margin: 0 0 21px 9px;"></i>
+            </a>
+          </div>
+        </div>
+            <div  class="dropdown-divider"></div>
+            <h6 class="p-3 mb-0 text-center">{{untouched.length}} new messages</h6>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+            <i class="mdi mdi-bell-outline" style="font-size: 20px;"></i>
+            <span class="count-symbol bg-danger"></span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+            <h6 class="p-3 mb-0">Notifications</h6>
+            <div class="dropdown-divider"></div>
+            <div *ngFor="let item of ev_notif">
+              <a class="dropdown-item preview-item">
+              <div class="preview-thumbnail">
+                <div class="preview-icon bg-success">
+                  <i class="mdi mdi-calendar"></i>
+                </div>
+              </div>
+              <div >
+              <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                <h6 class="preview-subject font-weight-normal mb-1">Event </h6>
+                <p class="text-gray ellipsis mb-0">L'evenement {{item.val.titre}} aura lieu le {{item.val.date_ev|date:'short'}} </p>
+              </div>
+            </div>
+            </a>
+            <div class="dropdown-divider"></div>
+          </div>
+          <div *ngFor="let item of question">
+            <a (click)="questreverse(item.key)" [routerLink]="['/parent/accepté']" class="dropdown-item preview-item">
+              <div class="preview-thumbnail">
+                <div class="preview-icon bg-info">
+                  <i class="mdi mdi-link-variant"></i>
+                </div>
+              </div>
+              <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                <h6 class="preview-subject font-weight-normal mb-1">Question</h6>
+                <p class="text-gray ellipsis mb-0"> l'admin a repondu a votre question concernant {{item.val.sujet}} </p>
+              </div><i *ngIf="item.val.touched==true" class="fa fa-check" style="margin: 0 0 21px 9px;"></i>
+            </a>
+            <div class="dropdown-divider"></div>
+          </div>
+          <div *ngFor="let item of reclam">
+            <a (click)="reclamreverse(item.key)" [routerLink]="['/parent/accepté']" class="dropdown-item preview-item">
+              <div class="preview-thumbnail">
+                <div class="preview-icon bg-info">
+                  <i class="mdi mdi-link-variant"></i>
+                </div>
+              </div>
+              <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                <h6 class="preview-subject font-weight-normal mb-1">Reclamation</h6>
+                <p class="text-gray ellipsis mb-0"> l'admin a repondu a votre reclamation concernant {{item.val.sujet}} </p>
+              </div><i *ngIf="item.val.touched==true" class="fa fa-check" style="margin: 0 0 21px 9px;"></i>
+            </a>
+            <div class="dropdown-divider"></div>
+          </div>
+          <div *ngFor="let item of sugg">
+            <a (click)="suggreverse(item.key)" [routerLink]="['/parent/accepté']" class="dropdown-item preview-item">
+              <div class="preview-thumbnail">
+                <div class="preview-icon bg-info">
+                  <i class="mdi mdi-link-variant"></i>
+                </div>
+              </div>
+              <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                <h6 class="preview-subject font-weight-normal mb-1">Suggestion</h6>
+                <p class="text-gray ellipsis mb-0"> l'admin a repondu a votre suggestion concernant {{item.val.sujet}} </p>
+              </div><i *ngIf="item.val.touched==true" class="fa fa-check" style="margin: 0 0 21px 9px;"></i>
+            </a>
+            <div class="dropdown-divider"></div>
+          </div>
+            <h6 class="p-3 mb-0 text-center">See all notifications</h6>
+          </div>
+        </li>
+        <li class="nav-item nav-logout d-none d-lg-block">
+          <a class="nav-link" (click)="logout()">
+            <i class="mdi mdi-power" style="font-size: 20px;cursor: pointer;"></i>
+          </a>
+        </li>
+      </ul>
+      <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+        <span class="mdi mdi-menu"></span>
+      </button>
+    </div>
+  </nav>
+  <!-- partial -->
+  <div class="container-fluid page-body-wrapper">
+    <!-- partial:partials/_sidebar.html -->
+    <nav class="sidebar sidebar-offcanvas" id="sidebar">
+      <ul class="nav">
+        <li class="nav-item nav-profile">
+          <a href="#" class="nav-link">
+            <div class="nav-profile-image">
+              <img src='https://ui-avatars.com/api/?background=5443ab&color=fff&rounded=true&name={{profile.lastName}}+{{profile.firstName}}' alt="profile">
+              <span class="login-status online"></span>
+              <!--change to offline or busy as needed-->
+            </div>
+            <div class="nav-profile-text d-flex flex-column">
+              <span class="font-weight-bold mb-2"     style="font-size: medium;"
+              >{{profile.firstName}} {{profile.lastName}}</span>
+              <span class="text-secondary text-small">{{profile.role}}</span>
+            </div>
+            <i class="mdi mdi-bookmark-check text-success nav-profile-badge" style="
+            font-size: 20px;"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/parent/test']">
+            <span class="menu-title">Calendrier</span>
+            <i class="fa fa-calendar"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['profile']">
+            <span class="menu-title">Profile</span>
+            <i class="fa fa-id-card"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/parent/reunion']"
+          routerLinkActive="router-link-active">
+            <span class="menu-title">Reunion</span>
+            <i class="fa fa-phone"></i>
+          </a>
+          <div class="collapse" id="ui-basic">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
+              <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/parent/suggestion']"
+          routerLinkActive="router-link-active">
+            <span class="menu-title">Suggestion</span>
+            <i class="fa fa-tty"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/parent/accepté']">
+            <span class="menu-title">Notification</span>
+            <i class="fa fa-bell"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/parent/dashparent']">
+            <span class="menu-title">Enfant(s)</span>
+            <i class="fa fa-user fa-fw"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="clicked()">
+            <span class="menu-title">Chat</span>
+            <i class="fa fa-weixin"></i>
+          </a>
+        </li>
+         <div *ngFor="let item of  child_id" class="mb-5" >
+        <li class="nav-item" *ngIf="click" >
+          <a class="nav-link" [routerLink]="['/parent/enfantchat',item.key]"
+          routerLinkActive="router-link-active" >
+          <i class="fa fa-user fa-fw" style="margin-left: 0;"></i>
+            <span class="menu-title">{{item.val.firstName}} {{item.val.lastName}}</span>
+          </a>
+        </li>
+      </div>
+        <li class="nav-item sidebar-actions">
+          <span class="nav-link">
+            <div class="border-bottom">
+              <h6 class="font-weight-normal mb-3">Projects</h6>
+            </div>
+            <button class="btn btn-block btn-lg btn-gradient-primary mt-4" [routerLink]="['/parent/test']">+ Add a project</button>
+            <div class="mt-4">
+              <div class="border-bottom">
+                <p class="text-secondary">Categories</p>
+              </div>
+              <ul class="gradient-bullet-list mt-4">
+                <li>Free</li>
+                <li>Pro</li>
+              </ul>
+            </div>
+          </span>
+        </li>
+      </ul>
+    </nav>
+    <!-- partial -->
+    <div class="main-panel">
+      <div class="content-wrapper">
+        <div class="row" id="proBanner">
+          <div class="col-12">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+      </div>
+      <!-- content-wrapper ends -->
+      <!-- partial:partials/_footer.html -->
+      <footer class="footer">
+        <div class="d-sm-flex justify-content-center justify-content-sm-between">
+          <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2017 <a href="https://www.bootstrapdash.com/" target="_blank">BootstrapDash</a>. All rights reserved.</span>
+          <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
+        </div>
+      </footer>
+      <!-- partial -->
+    </div>
+    <!-- main-panel ends -->
+  </div>
+  <!-- page-body-wrapper ends -->
+</div>
+
+
+
+<!--<app-nav></app-nav>
+<div class="abc">
+    <div class=" col-2">
+        <nav id="sidebar">
+            <div class="p-4">
+              <div style="width: 100%; visibility: hidden;">  abc   </div>
+              <div mat-card-avatar class="avatar">
+                <img mat-card-image    src='https://ui-avatars.com/api/?background=5443ab&color=fff&rounded=true&name={{profile.lastName}}+{{profile.firstName}}'>
+                <p>{{profile.firstName}} {{profile.lastName}}</p></div>
+              <ul class="list-unstyled components mb-5">
+                <li class="active">
+                  <a [routerLink]="['profile']"
+                  routerLinkActive="router-link-active"><span class="fa fa-user"></span> Profile</a>
+                  </li>
+                <li class="active">
+                  <a href="#"><span class="fa fa-home mr-3"></span> Home</a>
+                </li>
+                <li>
+                    <a href="#" [routerLink]="['/parent/reunion']"
+                    routerLinkActive="router-link-active"><span class="fa fa-calendar"></span> Reunion</a>
+                </li>
+                <li>
+                  <a [routerLink]="['/parent/suggestion']"
+                  routerLinkActive="router-link-active"><span class="fa fa-weixin"></span> Suggestion</a>
+                </li>
+                <li>
+                  <a [routerLink]="['/parent/accepté']"
+                  routerLinkActive="router-link-active"><span  class="fa fa-bell"></span> Notification</a>
+                </li>
+                <li>
+                  <a  (click)="clicked()"><span class="fa fa-weixin"></span>Chat</a>
+                </li>
+                <div *ngFor="let item of  child_id" class="mb-5">
+                <li *ngIf="click">
+                    <a [routerLink]="['/parent/enfantchat',item.key]"
+                    routerLinkActive="router-link-active"><span class="fa fa-user fa-fw"></span>{{item.val.firstName}} {{item.val.lastName}}</a>
+                  </li>
+                 </div>
+
+              </ul>
+            </div>
+          </nav>
+    </div>
+    <div class="col-10"><router-outlet></router-outlet></div>
+
+</div>-->

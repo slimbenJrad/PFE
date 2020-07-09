@@ -14,18 +14,19 @@ export class SuggestionComponent implements OnInit {
   profile:any;
   id:any;
   date:Date;
+  state;
   constructor(public fauth: AngularFireAuth,private publication: PublicationService) {this.date = new Date(); }
 
   ngOnInit(): void {
     this.profile = JSON.parse( localStorage.getItem('profil'));
-    this.profile= this.fauth.authState.subscribe(data => {
+    this.state= this.fauth.authState.subscribe(data => {
       if (data) {
        this.id=data.uid
        console.log("id personne",this.id)
     }
     })}
     pubsuggestion(){
-      this.publication.suggestion(this.Sujet,this.date.toString(),this.description,this.id,this.selection)
+      this.publication.suggestion(this.Sujet,this.date.toString(),this.description,this.id,this.selection,this.profile.firstName,this.profile.lastName)
     }
 
 }

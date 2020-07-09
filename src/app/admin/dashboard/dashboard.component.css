@@ -1,3 +1,30 @@
+/* el input mte3i */
+.file-input{
+  display: none;
+}
+i{padding: 2px;
+}
+label{
+  padding: 8px;
+  border-radius: 5px;
+  color: aliceblue;
+  background-color: blue;
+}
+label:hover{
+  background-color:#3369ff;
+  cursor: pointer;
+  color: lightgray;
+}
+.ajouter{
+  background-color: #008CBA;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  height: 40px;
+   width: 85px;
+}
+
+/*fin*/
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 html, body {
   height: 100%;

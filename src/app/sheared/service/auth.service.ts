@@ -11,7 +11,8 @@ import { Observable } from 'rxjs';
 export class AuthService {
   user: User;
   logs: any;
-  profile: Observable<any>
+  log: any;
+  profile: Observable<any>;
   constructor(public fauth: AngularFireAuth, public route: Router, private afDatabase: AngularFireDatabase) {
     this.fauth.authState.subscribe(user => {
       if (user) {
@@ -25,13 +26,14 @@ export class AuthService {
   async login(mail: string, pwd: string) {
     this.logs = await this.fauth.auth.signInWithEmailAndPassword(mail, pwd);
     if (this.logs) {
-      //charger l'objet du user profile  courant
+      // charger l'objet du user profile  courant
       this.fauth.authState.subscribe(data => {
         if (data) {
           this.afDatabase.object(`user/${data.uid}`).valueChanges().subscribe(log => {
             console.log(log);
-            //insert dans localstorage profile
-            localStorage.setItem('profil', JSON.stringify(log))
+            // insert dans localstorage profile
+            localStorage.setItem('profil', JSON.stringify(log));
+
           }
 
           )
@@ -40,7 +42,7 @@ export class AuthService {
       })
 
     }
-    return;
+    return ;
 
   }
   async register(firstName, lastName, num_Tel, type_user, code, email, password) {
@@ -58,7 +60,7 @@ export class AuthService {
           email: email
         }).then(() => console.log("insrt lok"));
       })
-      //this.verify(); { }
+      this.verify(); { }
     }
     catch (e) {
       console.log(e);

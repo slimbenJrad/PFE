@@ -1,47 +1,26 @@
 
-
 <!-- start header -->
 <header>
   <div class="navbar navbar-default navbar-static-top">
     <div class="container">
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
         <a class="navbar-brand" href="index.html"><i
-            class="icon-info-blocks material-icons">account_balance</i>Kids<strong>school</strong></a>
+            class="icon-info-blocks material-icons">account_balance</i>Kids<strong>Academy</strong><p >by Selim Ben jrad</p></a>
       </div>
       <div class="navbar-collapse collapse ">
-        <ul class="nav navbar-nav" *ngIf="islogged"> 
+        <ul class="nav navbar-nav" *ngIf="islogged">
           <li ><a class="waves-effect waves-dark" [routerLink]="['/home']"
               routerLinkActive="router-link-active">Home</a></li>
-              <li><a   *ngIf="role.role=='parent'" class="waves-effect waves-dark" [routerLink]="['/parent/reunion']"
-                routerLinkActive="router-link-active">reunion</a></li>
-                <li><a   *ngIf="role.role=='parent'" class="waves-effect waves-dark" [routerLink]="['/parent/suggestion']"
-                  routerLinkActive="router-link-active">suggestion</a></li>
+             <li><a   *ngIf="role.role=='parent'" class="waves-effect waves-dark" [routerLink]="['/parent/accepté']"
+                routerLinkActive="router-link-active">Dashboard</a></li>
+             <li><a   *ngIf="role.role=='prof'" class="waves-effect waves-dark" [routerLink]="['/prof']"
+                  routerLinkActive="router-link-active">Dashboard</a></li>
                   <li><a class="waves-effect waves-dark" href="#"(click)="logout()" >Deconnexion</a></li>
-                  <li><a   *ngIf="role.role=='eleve'" class="waves-effect waves-dark" [routerLink]="['/eleve/devoir']"
+                  <li><a   *ngIf="role.role=='eleve'" class="waves-effect waves-dark" [routerLink]="['/eleve']"
                     routerLinkActive="router-link-active">Travail</a></li>
-                    <li><a   *ngIf="role.role=='prof'" class="waves-effect waves-dark" [routerLink]="['/prof/publication']"
-                      routerLinkActive="router-link-active">Publier</a></li>
-            <li class="dropdown">
-              <a href="#" data-toggle="dropdown" class="dropdown-toggle waves-effect waves-dark">About Us <b
-                  class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a class="waves-effect waves-dark" href="about.html">Company</a></li>
-                <li><a class="waves-effect waves-dark" href="#">News</a></li>
-                <li><a class="waves-effect waves-dark" href="#">Investors</a></li>
-              </ul>
-            </li>
-            <li><a class="waves-effect waves-dark" href="services.html">Services</a></li>
-            <li><a class="waves-effect waves-dark" href="portfolio.html">Gallery</a></li>
-            <li><a class="waves-effect waves-dark" href="pricing.html">Fees</a></li>
-            <li><a class="waves-effect waves-dark" href="contact.html">Contact</a></li>
-       
+
         </ul>
-        <ul class="nav navbar-nav" *ngIf="!islogged"> 
+        <ul class="nav navbar-nav" *ngIf="!islogged">
             <li class="active"><a class="waves-effect waves-dark" [routerLink]="['/home']"
                 routerLinkActive="router-link-active">Home</a></li>
                 <li ><a class="waves-effect waves-dark" [routerLink]="['/login']"
@@ -55,3 +34,4 @@
     </div>
   </div>
 </header>
+

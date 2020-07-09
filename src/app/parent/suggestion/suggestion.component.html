@@ -1,3 +1,4 @@
+<div class="container-fluid">
 <mat-radio-group  [(ngModel)]="selection" aria-label="Select an option">
     <mat-radio-button value="suggestion">suggestion</mat-radio-button>
     <mat-radio-button value="reclamaion">reclamaion</mat-radio-button>
@@ -14,4 +15,5 @@
   </div>
   <textarea [(ngModel)]="description" rows="15" cols="50">                             
 </textarea>
-<button (click)="pubsuggestion()">Envoyer</button>
+<button mat-raised-button color="accent"  (click)="pubsuggestion()">Envoyer</button>
+</div>

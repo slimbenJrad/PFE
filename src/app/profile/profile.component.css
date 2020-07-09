@@ -1,0 +1,53 @@
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: auto;
+    text-align: left;
+    width: 500px;
+    height: 90%;
+    border-radius: 20px;
+  }
+  .enfant {
+    display: flex;
+   }
+  .info {
+   display: flex;
+  }
+  .mat-icon {
+    height: 36px !important;
+    width: 36px !important;
+    font-size: 36px !important;
+  }
+  button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 29px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+  .form-control{
+    margin: 0 0 20px;
+  }
+  .fa {
+    font-size: 29px;
+    width: 36px !important;
+    margin-left: 3px;
+  }
+  h1{
+    display: inline;
+  }
+  .example-button-container {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+  }
+  .delete{
+      color: red;
+      font-size: 20px !important;
+  }

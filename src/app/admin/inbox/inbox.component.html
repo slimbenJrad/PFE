@@ -1,0 +1,45 @@
+<div *ngFor="let item of sugg">
+    <mat-card class="example-card" >
+      <mat-card-header>
+      <mat-card-title>Suggestion</mat-card-title>
+      <mat-card-subtitle>{{item.val.nom}} {{item.val.prenom}}</mat-card-subtitle>
+      </mat-card-header> 
+      <mat-card-content>
+      <h3> {{item.val.sujet}}</h3>
+      </mat-card-content>
+      <mat-card-subtitle class="date">  {{item.val.date|date:'medium'}} </mat-card-subtitle>
+      <mat-card-actions>
+        <textarea autosize [(ngModel)]="respond"></textarea>
+      <button mat-raised-button (click)="Repond('suggestion',item.key)">Repondre</button>
+      </mat-card-actions>
+      </mat-card></div>
+      <div *ngFor="let item of clam">
+        <mat-card class="example-card" >
+          <mat-card-header>
+          <mat-card-title>Reclamation</mat-card-title>
+          <mat-card-subtitle>{{item.val.nom}} {{item.val.prenom}}  </mat-card-subtitle>
+          </mat-card-header> 
+          <mat-card-content>
+          <h3>{{item.val.sujet}} </h3>
+          </mat-card-content>         
+         <mat-card-subtitle class="date">  {{item.val.date|date:'medium'}} </mat-card-subtitle>
+          <mat-card-actions>
+            <textarea autosize [(ngModel)]="response"></textarea>
+      <button mat-raised-button (click)="claim('reclamaion',item.key)">Repondre</button>
+          </mat-card-actions>
+          </mat-card></div>
+          <div *ngFor="let item of questions">
+            <mat-card class="example-card" >
+              <mat-card-header>
+              <mat-card-title>Question</mat-card-title>
+              <mat-card-subtitle>{{item.val.nom}} {{item.val.prenom}}</mat-card-subtitle>
+              </mat-card-header> 
+              <mat-card-content>
+              <h3>{{item.val.sujet}} </h3>
+              </mat-card-content>             
+              <mat-card-subtitle class="date">  {{item.val.date|date:'medium'}} </mat-card-subtitle>
+              <mat-card-actions>
+                <textarea autosize [(ngModel)]="response2"></textarea>
+      <button mat-raised-button (click)="quest('Question',item.key)">Repondre</button>
+              </mat-card-actions>
+              </mat-card></div>
